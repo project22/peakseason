@@ -1,10 +1,13 @@
 PeakSeason::Application.routes.draw do
   # get "site/welcome"
-  root :to  => "site#hello"
-  get "/market/:id" => 'site#market'
+  root :to  => "site#home"
+  get "/market/:id" => 'markets#show'
+  # get "/market/:id" => 'site#market', as: :market_detail
   get "/region/:id/items" => 'items#index'
   get "/region/:id/items/:id" => 'items#show'
+
   resources :vendors
+  resources :markets
 
 
   # The priority is based upon order of creation: first created -> highest priority.

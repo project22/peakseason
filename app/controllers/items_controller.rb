@@ -2,10 +2,10 @@ class ItemsController < ApplicationController
 
 
   def index
-  	render template: "site/items"
+  	# render template: "site/items"
   end
 
   def show
-  	render template: "site/item_detail"
+  	render template: "items/item_detail"
   end
 end

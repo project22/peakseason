@@ -1,5 +1,5 @@
 class SiteController < ApplicationController
-  def hello
+  def home
   	render template: "site/home"
   end
   def market
