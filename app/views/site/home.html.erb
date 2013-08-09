@@ -68,74 +68,30 @@
           
           <div class="row-fluid">
             <div class="span6">
-              <img src="http://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=800x500&maptype=roadmap
+              <img src="http://maps.googleapis.com/maps/api/staticmap?center=Los+Angeles+California&zoom=13&size=800x500&maptype=roadmap
         &markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318
         &markers=color:red%7Ccolor:red%7Clabel:C%7C40.718217,-73.998284&sensor=false">
             </div>
             <div class="span6">
 
-              <div class="media">
-                <a class="pull-left" href="#">
-                  <img class="media-object" data-src="holder.js/64x64" width="100" src="http://farm8.staticflickr.com/7041/6983489307_2cd539565d_o.jpg">
-                </a>
-                <div class="media-body">
-                  <h4 class="media-heading">Union Square Farmer's Market</h4>
-                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                </div>
-              </div>
-              <div class="media">
-                  <% @market = 2 %>
-                  <%= link_to image_tag("http://farm5.staticflickr.com/4055/4484625559_0a42dfc7a3_o.jpg",  :class => "market_thumb pull-left"),  market_path(@market) %> 
- 
-                <div class="media-body">
-                  <h4 class="media-heading">Brooklyn Farmer's Market</h4>
-                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                </div>
-              </div>
+              
+<% @markets.each do |market| %>
               <div class="media">
                 <a class="pull-left" href="#">
                   <img class="media-object" data-src="holder.js/64x64" width="100" src="http://farm9.staticflickr.com/8283/7740419400_29354fbde0_o.jpg">
                 </a>
                 <div class="media-body">
-                  <h4 class="media-heading">Lower Broadway Farmer's Market</h4>
-                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                  <h4 class="media-heading"><%= market.name %></h4>
+                  <% @linkname = market.name %>
+                  <%= link_to @linkname, market %>
+                  <p><%= market.description %></p>
                 </div>
               </div>
+<% end %>
 
 
-              <!-- <div class="row-fluid">
-                <div class="span4">
-                  <div class="thumbnail">
-                    <img data-src="holder.js/300x200" alt="300x200" style="width: 300px; height: 200px;" src="http://farm8.staticflickr.com/7041/6983489307_2cd539565d_o.jpg">
-                    <div class="caption">
-                      <h3>Union Square Farmer's Market</h3>
-                      <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                      <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn">Action</a></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="span4">
-                  <div class="thumbnail">
-                    <img data-src="holder.js/300x200" alt="300x200" style="width: 300px; height: 200px;" src="http://farm5.staticflickr.com/4055/4484625559_0a42dfc7a3_o.jpg">
-                    <div class="caption">
-                      <h3>Brooklyn Farmer's Market</h3>
-                      <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                      <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn">Action</a></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="span4">
-                  <div class="thumbnail">
-                    <img data-src="holder.js/300x200" alt="300x200" style="width: 300px; height: 200px;" src="http://farm9.staticflickr.com/8283/7740419400_29354fbde0_o.jpg">
-                    <div class="caption">
-                      <h3>Lower Broadway Farmer's Market</h3>
-                      <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                      <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn">Action</a></p>
-                      
-                    </div>
-                  </div>
-                </div>
-              </div> -->
+
+
             </div>
           </div>
 
@@ -144,18 +100,37 @@
         <div class="span4 sidebar">
           
           <div>
+            <h4>August in California <button class="btn btn-small">Change Location</button></h4>
             <h3>What's in Peak Season</h3>
-             <h4>August in California <button class="btn btn-small">Change Location</button></h4>
-           <!--  <form>
-              <fieldset>               
-                <input type="text" placeholder="Type something…">
-                <button type="submit" class="btn">Search</button>
-              </fieldset>
-            </form> -->
+            
+
             <table class="table table-hover">
- <!--              Flickr API
-              Key: ef723e9bf172d69246ea3f50c3498177
-              Secret: 5364c03a181db7dc -->
+            <%
+              # Flickr API
+              # Key: ef723e9bf172d69246ea3f50c3498177
+              # Secret: 5364c03a181db7dc 
+
+            require 'flickraw'
+
+            FlickRaw.api_key="ef723e9bf172d69246ea3f50c3498177"
+            FlickRaw.shared_secret="5364c03a181db7dc"
+
+            list   = flickr.photos.getRecent
+
+            tags = "apple"
+            id     = list[0].id
+            secret = list[0].secret
+            info = flickr.photos.getInfo :photo_id => id, :secret => secret
+
+            puts info.title           # => "PICT986"
+            puts info.dates.taken     # => "2006-07-06 15:16:18"
+
+            sizes = flickr.photos.getSizes :photo_id => id
+
+            original = sizes.find {|s| s.label == 'Original' }
+            puts original.width       # => "800" -- may fail if they have no original marked image
+            %>
+     
             <% @items.each do |item| %>
               <tr>
                 <td><img class="item_thumb" src="http://farm5.staticflickr.com/4079/4771120641_e3afc9ac2a_o.jpg" alt=""/></td>
@@ -185,9 +160,3 @@
 
 
 
-<script type="text/javascript">
-
-$('.carousel').carousel({
-  interval: 4000
-})
-</script>

@@ -73,6 +73,7 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    flickraw (0.9.6)
     hike (1.2.3)
     i18n (0.6.4)
     jbuilder (1.5.0)
@@ -114,6 +115,7 @@ GEM
       railties (>= 4.0.0.beta, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
+    seed_dump (0.6.0)
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -145,11 +147,13 @@ DEPENDENCIES
   bcrypt-ruby
   bootstrap-datepicker-rails!
   bson_ext
+  flickraw (~> 0.9.6)
   jbuilder
   jquery-rails
   mongoid!
   rails (= 4.0.0)
   sass-rails
+  seed_dump (~> 0.6.0)
   turbolinks
   twitter-bootstrap-rails!
   uglifier

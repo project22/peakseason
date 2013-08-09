@@ -1,4 +1,6 @@
 PeakSeason::Application.routes.draw do
+  resources :regions
+
   resources :items
 
   # get "site/welcome"
