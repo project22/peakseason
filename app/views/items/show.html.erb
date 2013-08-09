@@ -1,1 +1,24 @@
-Item detail
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @item.name %>
+</p>
+
+<p>
+  <strong>Season start:</strong>
+  <%= @item.season_start %>
+</p>
+
+<p>
+  <strong>Season end:</strong>
+  <%= @item.season_end %>
+</p>
+
+<p>
+  <strong>Region:</strong>
+  <%= @item.region %>
+</p>
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>

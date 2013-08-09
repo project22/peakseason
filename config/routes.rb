@@ -1,4 +1,6 @@
 PeakSeason::Application.routes.draw do
+  resources :items
+
   # get "site/welcome"
   root :to  => "site#home"
   get "/market/:id" => 'markets#show'

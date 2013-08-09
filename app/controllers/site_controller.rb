@@ -1,5 +1,7 @@
 class SiteController < ApplicationController
   def home
+  	@month = 8
+  	@items = Item.where(:season_start.lt => @month,  :season_end.gt => @month )
   	render template: "site/home"
   end
   def market

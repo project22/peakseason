@@ -144,8 +144,8 @@
         <div class="span4 sidebar">
           
           <div>
-            <h3>What's Peaking in Your Area</h3>
-             <p>New York <button class="btn btn-small">Change Location</button></p>
+            <h3>What's in Peak Season</h3>
+             <h4>August in California <button class="btn btn-small">Change Location</button></h4>
            <!--  <form>
               <fieldset>               
                 <input type="text" placeholder="Type something…">
@@ -153,126 +153,25 @@
               </fieldset>
             </form> -->
             <table class="table table-hover">
+ <!--              Flickr API
+              Key: ef723e9bf172d69246ea3f50c3498177
+              Secret: 5364c03a181db7dc -->
+            <% @items.each do |item| %>
               <tr>
                 <td><img class="item_thumb" src="http://farm5.staticflickr.com/4079/4771120641_e3afc9ac2a_o.jpg" alt=""/></td>
-                <td>Item Name</td>
+                <td><%= item.name %></td>
+             
                 <td>
                   <div class="pull-right">
                     <button class="btn btn-success btn-small"><i class="icon-leaf"> More Info</i></button> 
                     <button class="btn btn-small"><i class="icon-plus"> Add to List</i></button>
                   </div>
                 </td>
-              </tr>            
-              <tr>
-                <td><img class="item_thumb" src="http://farm3.staticflickr.com/2472/3900306230_ed2796bf90_o.jpg" alt=""/></td>
-                <td>Item Name</td>
-                <td>
-                  <div class="pull-right">
-                    <button class="btn btn-success btn-small"><i class="icon-leaf"> More Info</i></button> 
-                    <button class="btn btn-small"><i class="icon-plus"> Add to List</i></button>
-                  </div>
-                </td>
+               
               </tr>
-              <tr>
-                <td><img class="item_thumb" src="http://farm1.staticflickr.com/134/362660326_a13bc1c2b0_o.jpg" alt=""/></td>
-                <td>Item Name</td>
-                <td>
-                  <div class="pull-right">
-                    <button class="btn btn-success btn-small"><i class="icon-leaf"> More Info</i></button> 
-                    <button class="btn btn-small"><i class="icon-plus"> Add to List</i></button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td><img class="item_thumb" src="http://farm5.staticflickr.com/4116/4890326540_852094b44b_o.jpg" alt=""/></td>
-                <td>Item Name</td>
-                <td>
-                  <div class="pull-right">
-                    <button class="btn btn-success btn-small"><i class="icon-leaf"> More Info</i></button> 
-                    <button class="btn btn-small"><i class="icon-plus"> Add to List</i></button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td><img class="item_thumb" src="http://farm5.staticflickr.com/4079/4771120641_e3afc9ac2a_o.jpg" alt=""/></td>
-                <td>Item Name</td>
-                <td>
-                  <div class="pull-right">
-                    <button class="btn btn-success btn-small"><i class="icon-leaf"> More Info</i></button> 
-                    <button class="btn btn-small"><i class="icon-plus"> Add to List</i></button>
-                  </div>
-                </td>
-              </tr>            
-              <tr>
-                <td><img class="item_thumb" src="http://farm3.staticflickr.com/2472/3900306230_ed2796bf90_o.jpg" alt=""/></td>
-                <td>Item Name</td>
-                <td>
-                  <div class="pull-right">
-                    <button class="btn btn-success btn-small"><i class="icon-leaf"> More Info</i></button> 
-                    <button class="btn btn-small"><i class="icon-plus"> Add to List</i></button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td><img class="item_thumb" src="http://farm1.staticflickr.com/134/362660326_a13bc1c2b0_o.jpg" alt=""/></td>
-                <td>Item Name</td>
-                <td>
-                  <div class="pull-right">
-                    <button class="btn btn-success btn-small"><i class="icon-leaf"> More Info</i></button> 
-                    <button class="btn btn-small"><i class="icon-plus"> Add to List</i></button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td><img class="item_thumb" src="http://farm5.staticflickr.com/4116/4890326540_852094b44b_o.jpg" alt=""/></td>
-                <td>Item Name</td>
-                <td>
-                  <div class="pull-right">
-                    <button class="btn btn-success btn-small"><i class="icon-leaf"> More Info</i></button> 
-                    <button class="btn btn-small"><i class="icon-plus"> Add to List</i></button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td><img class="item_thumb" src="http://farm5.staticflickr.com/4079/4771120641_e3afc9ac2a_o.jpg" alt=""/></td>
-                <td>Item Name</td>
-                <td>
-                  <div class="pull-right">
-                    <button class="btn btn-success btn-small"><i class="icon-leaf"> More Info</i></button> 
-                    <button class="btn btn-small"><i class="icon-plus"> Add to List</i></button>
-                  </div>
-                </td>
-              </tr>            
-              <tr>
-                <td><img class="item_thumb" src="http://farm3.staticflickr.com/2472/3900306230_ed2796bf90_o.jpg" alt=""/></td>
-                <td>Item Name</td>
-                <td>
-                  <div class="pull-right">
-                    <button class="btn btn-success btn-small"><i class="icon-leaf"> More Info</i></button> 
-                    <button class="btn btn-small"><i class="icon-plus"> Add to List</i></button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td><img class="item_thumb" src="http://farm1.staticflickr.com/134/362660326_a13bc1c2b0_o.jpg" alt=""/></td>
-                <td>Item Name</td>
-                <td>
-                  <div class="pull-right">
-                    <button class="btn btn-success btn-small"><i class="icon-leaf"> More Info</i></button> 
-                    <button class="btn btn-small"><i class="icon-plus"> Add to List</i></button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td><img class="item_thumb" src="http://farm5.staticflickr.com/4116/4890326540_852094b44b_o.jpg" alt=""/></td>
-                <td>Item Name</td>
-                <td>
-                  <div class="pull-right">
-                    <button class="btn btn-success btn-small"><i class="icon-leaf"> More Info</i></button> 
-                    <button class="btn btn-small"><i class="icon-plus"> Add to List</i></button>
-                  </div>
-                </td>
-              </tr>
+            <% end %>
+
+             
 
             </table>
           </div>
