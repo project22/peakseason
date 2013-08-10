@@ -26,6 +26,7 @@ module FlickRaw
 
   # Root class of the flickr api hierarchy.
   class Flickr < Request
+
     # Authenticated access token
     attr_accessor :access_token
     

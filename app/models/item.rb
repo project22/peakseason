@@ -7,4 +7,5 @@ class Item
   field :season_start, type: Integer
   field :season_end, type: Integer
   field :region, type: String
+  field :image_url, type: String
 end

@@ -75,15 +75,16 @@
             <div class="span6">
 
               
-<% @markets.each do |market| %>
+<% @markets.each do |market| 
+    @linkname = market.name %>
               <div class="media">
                 <a class="pull-left" href="#">
                   <img class="media-object" data-src="holder.js/64x64" width="100" src="http://farm9.staticflickr.com/8283/7740419400_29354fbde0_o.jpg">
                 </a>
                 <div class="media-body">
-                  <h4 class="media-heading"><%= market.name %></h4>
-                  <% @linkname = market.name %>
-                  <%= link_to @linkname, market %>
+                  <h4 class="media-heading"><%= link_to @linkname, market %></h4>
+
+                  
                   <p><%= market.description %></p>
                 </div>
               </div>
@@ -105,35 +106,11 @@
             
 
             <table class="table table-hover">
-            <%
-              # Flickr API
-              # Key: ef723e9bf172d69246ea3f50c3498177
-              # Secret: 5364c03a181db7dc 
-
-            require 'flickraw'
-
-            FlickRaw.api_key="ef723e9bf172d69246ea3f50c3498177"
-            FlickRaw.shared_secret="5364c03a181db7dc"
-
-            list   = flickr.photos.getRecent
-
-            tags = "apple"
-            id     = list[0].id
-            secret = list[0].secret
-            info = flickr.photos.getInfo :photo_id => id, :secret => secret
-
-            puts info.title           # => "PICT986"
-            puts info.dates.taken     # => "2006-07-06 15:16:18"
-
-            sizes = flickr.photos.getSizes :photo_id => id
-
-            original = sizes.find {|s| s.label == 'Original' }
-            puts original.width       # => "800" -- may fail if they have no original marked image
-            %>
+          
      
             <% @items.each do |item| %>
               <tr>
-                <td><img class="item_thumb" src="http://farm5.staticflickr.com/4079/4771120641_e3afc9ac2a_o.jpg" alt=""/></td>
+                <td><img class="item_thumb" src="<%= item.image_url %>" alt=""/></td>
                 <td><%= item.name %></td>
              
                 <td>
