@@ -9,11 +9,15 @@
                 http://twitter.github.com/bootstrap/javascript.html#carousel -->
           <div id="this-carousel-id" class="carousel slide"><!-- class of slide for animation -->
             <div class="carousel-inner">
-              <div class="item" id="item1"><!-- class of active since it's the first item -->
+
+              <% my_index = 1 %>
+              <% @carousel_items.each do |item| %>
+         
+              <div class="item" style="background-image: url('<%= item.image_url %>');background-size:100%"><!-- class of active since it's the first item -->
                 
                 <div class="hero-unit hero-overlay" >
-                  <h1>Kale</h1>
-                  <p>Kale in sesaon</p>
+                  <h1><%= item.name %> <%= item.season_start %></h1>
+                  <p><%= item.name %> now in sesaon</p>
                   <p>
                     <a class="btn btn-primary btn-large">
                       Learn more
@@ -21,6 +25,9 @@
                   </p>
                 </div>
               </div>
+              <% 
+              my_index = my_index +1
+              end %>
 
 
               <div class="item active" id="item2">
@@ -31,11 +38,14 @@
                     <a class="btn btn-primary btn-large">
                       Learn more
                     </a>
+                    <a class="btn  btn-large">
+                      Recipes
+                    </a>
                   </p>
                 </div>
                 
               </div>
-              <div class="item" id="item3">
+          <!--     <div class="item" id="item3">
                 <div class="hero-unit hero-overlay" >
                   <h1>Heirloom Tomatoes</h1>
                   <p>Heirloom Tomatoes  in sesaon</p>
@@ -45,9 +55,9 @@
                     </a>
                   </p>
                 </div>
-              </div>
+              </div> -->
 
-              <div class="item" id="item4">
+            <!--   <div class="item" id="item4">
                 <div class="hero-unit hero-overlay pull-right" >
                   <h1>Pistachios</h1>
                   <p>Pistachios in sesaon</p>
@@ -57,7 +67,7 @@
                     </a>
                   </p>
                 </div>
-              </div>
+              </div> -->
             </div><!-- /.carousel-inner -->
             <!--  Next and Previous controls below
                   href values must reference the id for this carousel -->
@@ -101,7 +111,7 @@
         <div class="span4 sidebar">
           
           <div>
-            <h4>August in California <button class="btn btn-small">Change Location</button></h4>
+            <h4><%= Date::MONTHNAMES[@month] %> in <%= @region %> <button class="btn btn-small">Change Location</button></h4>
             <h3>What's in Peak Season</h3>
             
 
@@ -111,7 +121,7 @@
             <% @items.each do |item| %>
               <tr>
                 <td><img class="item_thumb" src="<%= item.image_url %>" alt=""/></td>
-                <td><%= item.name %></td>
+                <td><%= link_to item.name, item %></td>
              
                 <td>
                   <div class="pull-right">

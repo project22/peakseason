@@ -8,6 +8,12 @@ class MarketsController < ApplicationController
     @markets = Market.all
   end
 
+  def local_listing
+  	@markets = Market.all
+  	# This one needs to filter by only those in local region.
+  	# nested something
+  end
+
   # GET /markets/1
   # GET /markets/1.json
   def show

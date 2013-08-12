@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Name:</strong>
@@ -22,3 +22,72 @@
 
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>
+<hr>
+ --><div class="container-fluid">
+  <div class="row-fluid">      
+    <div class="span4">
+      <div class="">
+        <h2><%= @item.name %></h2>
+        <img src="<%= @item.image_url %>"  />
+        
+        <div><button class="btn">Recipes</button></div>
+      </div>
+    </div>
+
+    <div class="span8">
+      <div>
+        <h3>Selling in these Markets</h3>
+        
+
+
+            
+
+
+
+<% @markets.each do |market|  %>
+        <div class="row-fluid">
+            <div class="span7">
+              <div class="media">
+                <a class="pull-left" href="#">
+                  <img class="media-object" data-src="holder.js/64x64" width="100" src="http://farm8.staticflickr.com/7041/6983489307_2cd539565d_o.jpg">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading"><%= market.name %></h4>
+                  <p>Rating: * * * | Bookmark</p>
+                  
+                  <div id="dp5" data-date="12-02-2013" data-date-format="dd-mm-yyyy"></div>
+
+                  <div>
+                    <ul>
+                      <li>Today, 9:00am - 1:00pm</li>
+                      <li>Saturday, Aug 12, 9:00am - 1:00pm</li>
+                      <li>Wednesday, Aug 17, 9:00am - 1:00pm</li>
+                    </ul>
+                  </div>
+                  <div><%= market.address %>
+                  </div>
+                  <p><%= market.description %></p>
+                </div>
+              </div>
+            </div>
+            <% map_url = URI.escape(market.address) %>
+            <div class="span5">
+                <img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= map_url %>&zoom=13&size=800x500&maptype=roadmap
+        &markers=color:blue%7Clabel:S%7C<%= map_url %>&markers=color:green%7Clabel:G%7C40.711614,-74.012318
+        &markers=color:red%7Ccolor:red%7Clabel:C%7C40.718217,-73.998284&sensor=false">
+            </div>
+        </div>
+
+
+        
+<% end %>
+       
+        
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+ 

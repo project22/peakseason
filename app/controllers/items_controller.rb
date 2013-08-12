@@ -1,6 +1,14 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
+  def local_listing
+    @items = Item.all
+  end
+
+  def yearview
+  end
+
+
   # GET /items
   # GET /items.json
   def index
@@ -10,6 +18,9 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
+    # both these queries need to be filtered by the item
+    @markets = Market.all
+    @vendors = Vendor.all
   end
 
   # GET /items/new

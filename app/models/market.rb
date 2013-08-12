@@ -3,6 +3,7 @@ class Market
  include Mongoid::Timestamps
 
  has_and_belongs_to_many :vendors
+ belongs_to :region
 
  field :name, 	type: String
  field :url, 	type: String

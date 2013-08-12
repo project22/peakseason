@@ -1,18 +1,27 @@
 PeakSeason::Application.routes.draw do
-  resources :regions
 
+  resources :regions
+  resources :markets
+  resources :vendors
   resources :items
+
+  get "/local_items" => "items#local_listing"
+  get "/local_markets" => "markets#local_listing"
+  get "/local_vendors" => "vendors#local_listing"
+  get "/local_recipes" => "recipes#local_listing"
+
+  get "/seasons" => "items#yearview"
 
   # get "site/welcome"
   root :to  => "site#home"
+
   get "/market/:id" => 'markets#show'
-  # get "/market/:id" => 'site#market', as: :market_detail
-  get "/region/:id/items" => 'items#index'
+ 
+# This makes no good sense
   get "/region/:id/items/:id" => 'items#show'
 
-  resources :vendors
-  resources :markets
 
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
