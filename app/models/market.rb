@@ -9,6 +9,7 @@ class Market
  field :url, 	type: String
  field :address, 	type: String
  field :description, 	type: String
+ field :day_week, type: String
  field :start_time, type: DateTime
  field :end_time, type: DateTime
 end

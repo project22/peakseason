@@ -16,11 +16,14 @@
               <div class="item" style="background-image: url('<%= item.image_url %>');background-size:100%"><!-- class of active since it's the first item -->
                 
                 <div class="hero-unit hero-overlay" >
-                  <h1><%= item.name %> <%= item.season_start %></h1>
+                  <h1><%= item.name %></h1>
                   <p><%= item.name %> now in sesaon</p>
                   <p>
                     <a class="btn btn-primary btn-large">
-                      Learn more
+                      Find Fresh
+                    </a>
+                    <a class="btn btn-large">
+                      Recipes
                     </a>
                   </p>
                 </div>
@@ -85,20 +88,9 @@
             <div class="span6">
 
               
-<% @markets.each do |market| 
-    @linkname = market.name %>
-              <div class="media">
-                <a class="pull-left" href="#">
-                  <img class="media-object" data-src="holder.js/64x64" width="100" src="http://farm9.staticflickr.com/8283/7740419400_29354fbde0_o.jpg">
-                </a>
-                <div class="media-body">
-                  <h4 class="media-heading"><%= link_to @linkname, market %></h4>
 
-                  
-                  <p><%= market.description %></p>
-                </div>
-              </div>
-<% end %>
+
+<%= render 'layouts/markets' %>
 
 
 
@@ -115,7 +107,7 @@
             <h3>What's in Peak Season</h3>
             
 
-            <table class="table table-hover">
+<!--             <table class="table table-hover">
           
      
             <% @items.each do |item| %>
@@ -135,7 +127,8 @@
 
              
 
-            </table>
+            </table> -->
+            <%= render 'layouts/items' %>
           </div>
 
         </div><!--/span-->

@@ -1,0 +1,14 @@
+<% @vendors.each do |vendor| 
+    @linkname = vendor.name %>
+              <div class="media">
+                <a class="pull-left" href="#">
+                  <img class="media-object" data-src="holder.js/64x64" width="100" src="http://farm9.staticflickr.com/8283/7740419400_29354fbde0_o.jpg">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading"><%= link_to @linkname, vendor %></h4>
+
+                  
+                 
+                </div>
+              </div>
+<% end %>

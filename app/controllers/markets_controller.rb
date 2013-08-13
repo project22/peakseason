@@ -2,6 +2,8 @@
 class MarketsController < ApplicationController
   before_action :set_market, only: [:show, :edit, :update, :destroy]
 
+  
+
   # GET /market
   # GET /market.json
   def index
@@ -12,11 +14,15 @@ class MarketsController < ApplicationController
   	@markets = Market.all
   	# This one needs to filter by only those in local region.
   	# nested something
+
   end
 
   # GET /markets/1
   # GET /markets/1.json
   def show
+    @items = Item.all
+    # This needs to be replaced with only items in this market.
+    @vendors = Vendor.all
   end
 
   # GET /markets/new

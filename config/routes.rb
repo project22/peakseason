@@ -8,7 +8,10 @@ PeakSeason::Application.routes.draw do
   get "/local_items" => "items#local_listing"
   get "/local_markets" => "markets#local_listing"
   get "/local_vendors" => "vendors#local_listing"
+
   get "/local_recipes" => "recipes#local_listing"
+  get "/local_recipes/:q" => "recipes#local_listing"
+  get "/recipes_json/:q" => "recipes#recipes_json"
 
   get "/seasons" => "items#yearview"
 

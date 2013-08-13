@@ -9,8 +9,10 @@ gem 'jbuilder'
 gem 'bcrypt-ruby', require: "bcrypt"
 gem 'activeresource'
 
-gem "seed_dump", "~> 0.6.0"
+gem "seed_dump", "~> 0.6.0" 
 gem "flickraw", "~> 0.9.6"
+gem "httparty", "~> 0.11.0"
+gem "geocoder", "~> 1.1.8"
 
 # gem 'activemodel' 
 
