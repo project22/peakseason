@@ -12,18 +12,28 @@
 
               <% my_index = 1 %>
               <% @carousel_items.each do |item| %>
-         
-              <div class="item" style="background-image: url('<%= item.image_url %>');background-size:100%"><!-- class of active since it's the first item -->
+              <% if my_index == 1 then
+                active_class = "active"
+              else
+                active_class = " "
+              end 
+              if my_index % 2 == 0 then
+                pull_class = "pull-right"
+              else
+                pull_class = ""
+              end
+              %>
+              <div class="item <%= active_class %>" style="background-image: url('<%= item.image_url %>');background-size:100%"><!-- class of active since it's the first item -->
                 
-                <div class="hero-unit hero-overlay" >
+                <div class="hero-unit hero-overlay <%= pull_class %>" >
                   <h1><%= item.name %></h1>
                   <p><%= item.name %> now in sesaon</p>
                   <p>
-                    <a class="btn btn-primary btn-large">
-                      Find Fresh
+                    <a class="btn btn-success " >
+                     <i class="icon-leaf"></i> More Info
                     </a>
-                    <a class="btn btn-large">
-                      Recipes
+                    <a class="btn" href="/local_recipes">
+                      Find Recipes
                     </a>
                   </p>
                 </div>
@@ -33,21 +43,7 @@
               end %>
 
 
-              <div class="item active" id="item2">
-                <div class="hero-unit hero-overlay pull-right" >
-                  <h1>Squash</h1>
-                  <p>Summer Squash in sesaon</p>
-                  <p>
-                    <a class="btn btn-primary btn-large">
-                      Learn more
-                    </a>
-                    <a class="btn  btn-large">
-                      Recipes
-                    </a>
-                  </p>
-                </div>
-                
-              </div>
+             
           <!--     <div class="item" id="item3">
                 <div class="hero-unit hero-overlay" >
                   <h1>Heirloom Tomatoes</h1>
@@ -103,7 +99,7 @@
         <div class="span4 sidebar">
           
           <div>
-            <h4><%= Date::MONTHNAMES[@month] %> in <%= @region %> <button class="btn btn-small">Change Location</button></h4>
+          <!--   <h4><%= Date::MONTHNAMES[@month] %> in <%= @region %> <button class="btn btn-small">Change Location</button></h4> -->
             <h3>What's in Peak Season</h3>
             
 
