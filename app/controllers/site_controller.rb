@@ -6,15 +6,15 @@ class SiteController < ApplicationController
     my_flickr = FlickrLib.new
   	@items = Item.where(:season_start.lte => @month,  :season_end.gte => @month )
     # @items = Item.all
-    @items = @items.map do |item|
-      if (item.image_url == nil) then
-        my_url = my_flickr.get_image_for_keyword(item.name + ' produce') 
-        item.image_url = my_url
-      end
-      item.save
-      # i.name = "monkey"
-      item
-    end
+    # @items = @items.map do |item|
+    #   if (item.image_url == nil) then
+    #     my_url = my_flickr.get_image_for_keyword(item.name + ' produce') 
+    #     item.image_url = my_url
+    #   end
+    #   item.save
+    #   # i.name = "monkey"
+    #   item
+    # end
 
     # get the carousel items.  Just items that started this month.  Maybe add the second month too.
     @carousel_items = Item.where(:season_start.gte => @month-1, :season_start.lte => @month )

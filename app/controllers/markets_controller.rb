@@ -2,7 +2,7 @@
 class MarketsController < ApplicationController
   before_action :set_market, only: [:show, :edit, :update, :destroy]
 
-  
+
 
   # GET /market
   # GET /market.json
@@ -82,7 +82,7 @@ class MarketsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def market_params
-      params.require(:market).permit(:name, :url, :address, :description, :start_time, :end_time )
+      params.require(:market).permit(:name, :url, :address, :description, :start_time, :end_time, :day_week )
     end
 end
 

@@ -1,10 +1,12 @@
-<h1>Listing regions</h1>
+<div class="container">
+<h1>Regions Listing</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
       <th>Country</th>
+      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -19,6 +21,8 @@
         <td><%= link_to 'Show', region %></td>
         <td><%= link_to 'Edit', edit_region_path(region) %></td>
         <td><%= link_to 'Destroy', region, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'View Markets', region_markets_path(region) %></td>
+        
       </tr>
     <% end %>
   </tbody>
@@ -27,3 +31,4 @@
 <br>
 
 <%= link_to 'New Region', new_region_path %>
+</div>

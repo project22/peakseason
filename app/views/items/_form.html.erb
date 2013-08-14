@@ -1,3 +1,4 @@
+
 <%= form_for(@item) do |f| %>
   <% if @item.errors.any? %>
     <div id="error_explanation">
@@ -17,11 +18,13 @@
   </div>
   <div class="field">
     <%= f.label :season_start %><br>
-    <%= f.date_select :season_start, :discard_year => true , :discard_day => true %>
+    <%= f.text_field :season_start %>
   </div>
   <div class="field">
     <%= f.label :season_end %><br>
-    <%= f.date_select :season_end, :discard_year => true, :discard_day => true %>
+    <%= f.text_field :season_end %>
+    
+
   </div>
   <div class="field">
     <%= f.label :region %><br>

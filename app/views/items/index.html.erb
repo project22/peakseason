@@ -1,6 +1,7 @@
-<h1>Listing items</h1>
+<div class="container">
+<h1>Items Listing</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
@@ -16,6 +17,7 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
+        <td><img src="<%= item.image_url %>" class="img-circle item_thumb"></td>
         <td><%= item.name %></td>
         <td><%= item.season_start %></td>
         <td><%= item.season_end %></td>
@@ -31,3 +33,4 @@
 <br>
 
 <%= link_to 'New Item', new_item_path %>
+</div>

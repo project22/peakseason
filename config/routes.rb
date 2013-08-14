@@ -1,6 +1,10 @@
 PeakSeason::Application.routes.draw do
 
-  resources :regions
+  resources :regions do
+    resources :markets do
+      resources :vendors
+    end
+  end
   resources :markets
   resources :vendors
   resources :items

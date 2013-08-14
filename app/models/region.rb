@@ -3,7 +3,7 @@ class Region
   field :name, type: String
   field :country, type: String
 
-  has_many :vendors
-  has_and_belongs_to_many :items
-  has_many :markets
+  embeds_many :vendors
+  embeds_many :items
+
 end

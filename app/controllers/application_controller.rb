@@ -9,7 +9,8 @@ class ApplicationController < ActionController::Base
   # @@region= request.location.city
 
   @@regions = Region.all
-  @@month = Date.today.month
+  # @@month = Date.today.month
+  @@month = 8
   @@local_markets=Market.all
 
   # def month
