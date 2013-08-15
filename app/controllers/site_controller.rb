@@ -1,10 +1,11 @@
 class SiteController < ApplicationController
   def home
-    @month = @@month
-    @region = @@region 
+    @month = Date.today.month
+    @region = session[:region]
+    # @region = @@region 
 
     my_flickr = FlickrLib.new
-  	@items = Item.where(:season_start.lte => @month,  :season_end.gte => @month )
+  	@items = Item.where(:season_start.lte => @month,  :season_end.gte => @month, :region => @region )
     # @items = Item.all
     # @items = @items.map do |item|
     #   if (item.image_url == nil) then
@@ -17,7 +18,10 @@ class SiteController < ApplicationController
     # end
 
     # get the carousel items.  Just items that started this month.  Maybe add the second month too.
-    @carousel_items = Item.where(:season_start.gte => @month-1, :season_start.lte => @month )
+    @carousel_items = Item.where(:season_start => @month)
+    if @carousel_items.count < 4 then
+      @carousel_items = Item.where(:season_start.gte => @month, :season_start.lte => @month+1 )
+    end
 
     puts @items.to_json
 

@@ -45,7 +45,7 @@
   </head>
   <body>
 
-    <div class="navbar navbar-fluid-top">
+    <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
           <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
@@ -61,24 +61,48 @@
               <li><%= link_to "Local Markets", "/local_markets"  %></li>
               <!-- <li><%= link_to "Local Vendors", "/local_vendors"  %></li> -->
               <li><%= link_to "Find Recipes", "/local_recipes"  %></li>
+            
+            
               
+            </ul>
+            <ul class="nav pull-right">
+
+            
+              <li class="dropdown pull-right">
+                <a href="#" class="dropdown-toggle pull-right" data-toggle="dropdown">
+                  <%
+                  @month = session[:month]
+                  @region = session[:region]
+                  %>
+                <%= Date::MONTHNAMES[@month] %> in <%= @region %>
+                <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#"><i class="icon-refresh"></i> Reset Region</a></li>  
+                  <li><a href="#"><i class="icon-globe"></i> Choose Region</a></li> 
+                </ul>
+              </li>
             
               
             </ul>
             
-          </div><!--/.nav-collapse -->
+          </div>
+          <!--/.nav-collapse -->
         </div>
       </div>
     </div>
     <!-- <div class="container"> -->
+    <div class="container">
     <%= bootstrap_flash %>
+    </div>
     <%= yield %>
 
 <!--     </div>  -->
     <!-- /container -->
-    <footer>
+<footer>
+  <hr>
       <div class="container">
-        <p>Footer</p>
+        <p>&copy; 2013, J.Piz.  All rights reserved.</p>
       </div>
     </footer>
     <!-- Javascripts

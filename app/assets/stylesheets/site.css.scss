@@ -3,53 +3,59 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-    #item1 {
-      background-image: url("http://farm9.staticflickr.com/8333/8412043903_0d12ea3230_o.jpg");
-      background-size: 100%;
-    }
-    #item2 {
-      background-image: url("http://farm8.staticflickr.com/7165/6658005171_d234fdc3a0_o.jpg");
-      background-size: 100%;
-    }
-    #item3 {
-      background-image: url("http://farm3.staticflickr.com/2472/3900306230_ed2796bf90_o.jpg");
-      background-size: 100%;
-    }
-    #item4 {
-      background-image: url("http://farm4.staticflickr.com/3391/3218983245_8306661d78_o.jpg");
-      background-size: 100%;
-    }
-    .hero-overlay {
-      width: 45%;
-      /*height: 200px;*/
-      position: relative;
-      top: 20px;
-      margin-left: 20px;
-      margin-right: 20px;
-      opacity:0.9;
-      filter:alpha(opacity=90); /* For IE8 and earlier */
+.hero-overlay {
+  width: 45%;
+  /*height: 200px;*/
+  position: relative;
+  top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  opacity:0.9;
+  filter:alpha(opacity=90); /* For IE8 and earlier */
 
-    }
-    .item {
-      height: 400px;
-      /*padding: 20px*/
-    }
-    .item_thumb {
-      width: 60px;
-      height: 50px;
-    }
-    .sidebar2 {
-      padding: 10px;
-      border-style:solid;
-      border-width: 1px;
-     /* box-shadow: 10px 10px 5px #888888;*/
-    }
-    .green_bg {
-      background: #e2f4d9;
-    }
-    .market_thumb {
-      width: 100px;
-      height: 100px;
-    }
+}
+.item {
+  height: 400px;
+  /*padding: 20px*/
+}
+.item_thumb {
+  width: 60px;
+  height: 50px;
+}
+.sidebar2 {
+  padding: 10px;
+  border-style:solid;
+  border-width: 1px;
+ /* box-shadow: 10px 10px 5px #888888;*/
+}
+.green_bg {
+  background: #e2f4d9;
+}
+.thumb {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+}
+.thumb_container {
+width: 200px;
+height: 150px;
+overflow: hidden;
+}
+
+.recipe_label {
+  margin-left:10px;
+  margin-right:10px;
+  bottom:0px; 
+  position: absolute;
+  opacity:0.9;
+  filter:alpha(opacity=90); /* For IE8 and earlier */ 
+
+
+}
+
+body { padding-top: 40px; }
+@media screen and (max-width: 768px) {
+    body { padding-top: 0px; }
+}
 
  

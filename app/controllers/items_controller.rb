@@ -1,4 +1,7 @@
 class ItemsController < ApplicationController
+  
+  
+
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def local_listing
@@ -21,6 +24,21 @@ class ItemsController < ApplicationController
     # both these queries need to be filtered by the item
     @markets = Market.all
     @vendors = Vendor.all
+
+    
+    
+    rec_loader = Rec.new
+    # ings = params[:q]
+    ings = params[:q]
+    @recipes = rec_loader.get_rec(URI::escape(@item.name))
+
+
+    # Find recipes which use this item
+    # rec_loader = Rec.new
+    # # need to pass the name field of items here.
+    # my_item = Post.find(params[:name])
+    # ings = params[my_item]
+    # @recipes = rec_loader.get_rec(ings)
   end
 
   # GET /items/new
@@ -85,7 +103,7 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :region)
+      params.require(:item).permit(:name, :region, :image_url, :season_start, :season_end)
       # removed the season_end and season_start, because they came in as hashes.  Lame.
     end
 end

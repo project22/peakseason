@@ -1,17 +1,20 @@
 <div class="container-fluid">
   <div class="row-fluid">      
     <div class="span4">
-      <div class="">
-        <h2><%= @market.name %></h2>
-        <p><%= @market.description %></p>
-        <div><%= @market.address %></div>
-      </div>
-      <div><%= @market.day_week %> | <%= @market.start_time %> - <%= @market.end_time %></div>
-      <div>
       
+      <h2><%= @market.name %></h2>
+      
+        <img src="<%= @market.image_url %>" >
+        <p><%= @market.description %></p>
+        <p>
+        <%= @market.start_time.strftime("%I:%M %p") %> - 
+        <%= @market.end_time.strftime("%I:%M %p") %>,
+        <%= @market.day_week %>
+        </p>
+        <a href="http://maps.google.com/maps?saddr=<%= @market.address %>" target="mrk_directions"><p><%= @market.address %></p>
         <img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= URI.escape(@market.address) %>&zoom=13&size=800x500&maptype=roadmap
-        &markers=color:green%7Clabel:%7C<%= URI.escape(@market.address) %>&sensor=false">
-      </div>     
+        &markers=color:green%7Clabel:%7C<%= URI.escape(@market.address) %>&sensor=false"></a>
+          
     </div>
     <div class="span4">
       <div>

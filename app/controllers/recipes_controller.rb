@@ -2,7 +2,8 @@
 
 class RecipesController < ApplicationController
   def local_listing
-  	@month = @@month
+  	@month = session[:month]
+    @region = session[:region]
   	# @items = Item.all
   	@items = Item.where(:season_start.lte => @month,  :season_end.gte => @month )
 

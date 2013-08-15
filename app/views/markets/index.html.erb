@@ -5,6 +5,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Image</th>
       <th>URL</th>
       <th>Address</th>
       <th>Description</th>
@@ -21,6 +22,7 @@
     <% @markets.each do |market| %>
       <tr>
         <td><%= market.name %></td>
+        <td><img class="media-object" data-src="holder.js/64x64" width="100" src="<%= market.image_url %>"></td>
         <td><%= market.url %></td>
 
         <td><%= market.address %></td>

@@ -4,6 +4,7 @@ class Vendor
 
   has_and_belongs_to_many :markets
   belongs_to :region
+  embeds_many :items
 
   field :name, type: String
   field :url, type: String

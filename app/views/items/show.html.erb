@@ -30,8 +30,82 @@
       <div class="">
         <h2><%= @item.name %></h2>
         <img src="<%= @item.image_url %>" width="100%" />
-        
-        <div><button class="btn">Recipes</button></div>
+        <div>
+          <h4>Try these recipes</h4>
+
+ <div id="this-carousel-id" class="carousel slide" ><!-- class of slide for animation -->
+            <div class="carousel-inner">
+
+              <% my_index = 1 %>
+
+  <% @recipes.each do |recipe|  %>
+       
+          
+              <% if my_index == 1 then
+                active_class = "active"
+              else
+                active_class = " "
+              end           
+              %>
+              <div class="item <%= active_class %>" style="background-image: url('<%= recipe['image_url'] %>'); background-size:100%; height: 200px;    background-repeat:no-repeat; background-position:center center; background-color:#000">
+                
+
+                
+                <div class="well well-small recipe_label">
+                  <a href="<%= recipe['f2f_url'] %>" target="recipe"><strong><%= recipe['title'] %></strong></a>
+                </div>
+              </div>
+              
+              <% 
+              my_index = my_index +1
+              end %>
+
+
+             
+          <!--     <div class="item" id="item3">
+                <div class="hero-unit hero-overlay" >
+                  <h1>Heirloom Tomatoes</h1>
+                  <p>Heirloom Tomatoes  in sesaon</p>
+                  <p>
+                    <a class="btn btn-primary btn-large">
+                      Learn more
+                    </a>
+                  </p>
+                </div>
+              </div> -->
+
+            <!--   <div class="item" id="item4">
+                <div class="hero-unit hero-overlay pull-right" >
+                  <h1>Pistachios</h1>
+                  <p>Pistachios in sesaon</p>
+                  <p>
+                    <a class="btn btn-primary btn-large">
+                      Learn more
+                    </a>
+                  </p>
+                </div>
+              </div> -->
+            </div><!-- /.carousel-inner -->
+            <!--  Next and Previous controls below
+                  href values must reference the id for this carousel -->
+              <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
+              <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
+          </div><!-- /.carousel -->
+
+
+
+<!-- 
+
+          <% @recipes.each do |recipe|  %>
+          <div class="well">
+            <a href="<%= recipe['f2f_url'] %>" target="recipe"><h5><%= recipe['title'] %></h5></a>
+            <a href="<%= recipe['f2f_url'] %>" target="recipe"><span class="thumb_container">
+                  <img class="media-object thumb" width="200" src="<%= recipe['image_url'] %>">
+                  </span></a>
+            <p><a href="<%= recipe['f2f_url'] %>" target="recipe">View Recipe</a></p>
+          </div>
+          <% end %> -->
+        </div>
       </div>
     </div>
 
@@ -45,43 +119,7 @@
 
 
 
-<% @markets.each do |market|  %>
-        <div class="row-fluid">
-            <div class="span7">
-              <div class="media">
-                <a class="pull-left" href="#">
-                  <img class="media-object" data-src="holder.js/64x64" width="100" src="http://farm8.staticflickr.com/7041/6983489307_2cd539565d_o.jpg">
-                </a>
-                <div class="media-body">
-                  <h4 class="media-heading"><%= link_to market.name, market %></h4>
-                  <p>Rating: * * * | Bookmark</p>
-                  
-                  <div id="dp5" data-date="12-02-2013" data-date-format="dd-mm-yyyy"></div>
-
-                  <div>
-                    <ul>
-                      <li>Today, 9:00am - 1:00pm</li>
-                      <li>Saturday, Aug 12, 9:00am - 1:00pm</li>
-                      <li>Wednesday, Aug 17, 9:00am - 1:00pm</li>
-                    </ul>
-                  </div>
-                  <div><%= market.address %>
-                  </div>
-                  <p><%= market.description %></p>
-                </div>
-              </div>
-            </div>
-            <% map_url = URI.escape(market.address) %>
-            <div class="span5">
-                <img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= map_url %>&zoom=13&size=800x500&maptype=roadmap
-        &markers=color:blue%7Clabel:S%7C<%= map_url %>&markers=color:green%7Clabel:G%7C40.711614,-74.012318
-        &markers=color:red%7Ccolor:red%7Clabel:C%7C40.718217,-73.998284&sensor=false">
-            </div>
-        </div>
-
-
-        
-<% end %>
+<%= render 'layouts/markets' %>
        
         
       </div>
