@@ -4,7 +4,6 @@ PeakSeason::Application.routes.draw do
     resources :markets do
       resources :market_times
     end
-    resources :vendors
   end
   
   resources :items
@@ -13,7 +12,7 @@ PeakSeason::Application.routes.draw do
 
   # get "/local_items" => "items#local_listing"
   # get "/local_markets" => "markets#local_listing"
-  # get "/local_vendors" => "vendors#local_listing"
+
 
   get "/local_recipes" => "recipes#local_listing"
   # get "/local_recipes/:q" => "recipes#local_listing"

@@ -49,16 +49,13 @@
           <a class="brand" href="/">In Peak Season <i class="icon-leaf"></i></a>
           <div class="container-fluid nav-collapse">
             <ul class="nav">         
-              <li><%= link_to "Local Markets", "/local_markets"  %></li>
+              <li><%= link_to "Local Markets", region_markets_path(@region.id)  %></li>
               <li><%= link_to "Find Recipes", "/local_recipes"  %></li>           
             </ul>
             <ul class="nav pull-right">
               <li class="dropdown pull-right">
                 <a href="#" class="dropdown-toggle pull-right" data-toggle="dropdown">
-                  <%
-                  @month = session[:month]
-                  @region = Region.find_by(name: "California")
-                  %>
+                 
                 <%= Date::MONTHNAMES[@month] %> in <%= @region.name %>
                 <b class="caret"></b>
                 </a>

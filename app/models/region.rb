@@ -4,7 +4,6 @@ class Region
   field :country, type: String
 
   has_many :markets
-  has_many :vendors
   has_many :items
 
 end

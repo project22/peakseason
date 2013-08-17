@@ -3,7 +3,6 @@ class Market
  include Mongoid::Timestamps
 
 	belongs_to :region, :inverse_of => nil
-	has_and_belongs_to_many :vendors, :inverse_of => nil
 	embeds_many :market_times
 
  field :name, 	type: String

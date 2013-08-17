@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row-fluid">      
-    <div class="span4">
+    <div class="span6">
       
       <h2><%= @market.name %></h2>
       
@@ -16,19 +16,14 @@
         &markers=color:green%7Clabel:%7C<%= URI.escape(@market.address) %>&sensor=false"></a>
           
     </div>
-    <div class="span4">
+    <div class="span6">
       <div>
         <h3>Selling at this market</h3>
   
         <%= render 'layouts/items' %>
       </div>
     </div>
-    <div class="span4">
-      <div>
-        <h3>Vendors at this market</h3>
-         <%= render 'layouts/vendors' %>
-      </div>
-    </div>
+
   </div>
 </div>
  

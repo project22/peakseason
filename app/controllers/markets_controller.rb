@@ -18,9 +18,9 @@ class MarketsController < ApplicationController
   # GET /regions/markets/1
   def show
     # @region = Region.find(params[:region_id])
-    @items = @region.items.all
+    # @items = @region.items.all
     # This needs to be replaced with only items in this market.
-    @vendors =  @region.vendors.all
+
   end
 
   # GET /regions/markets/new

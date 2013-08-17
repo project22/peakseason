@@ -23,7 +23,6 @@ class ItemsController < ApplicationController
   def show
     # both these queries need to be filtered by the item
     @markets = Market.all
-    @vendors = Vendor.all
 
     
     

@@ -1,24 +1,10 @@
 class SiteController < ApplicationController
   def home
-    @month = Date.today.month
-
-    # @region = session[:region]
-    @region = Region.where(name: "California")
+    
 
     my_flickr = FlickrLib.new
 
-  	@items = Item.where(:season_start.lte => @month,  :season_end.gte => @month, :region => @region )
-    # @items = Item.all
-    # @items = @items.map do |item|
-    #   if (item.image_url == nil) then
-    #     my_url = my_flickr.get_image_for_keyword(item.name + ' produce') 
-    #     item.image_url = my_url
-    #   end
-    #   item.save
-    #   # i.name = "monkey"
-    #   item
-    # end
-
+  	
     # get the carousel items.  Just items that started this month.  Maybe add the second month too.
     @carousel_items = Item.where(:season_start => @month)
     if @carousel_items.count < 4 then
@@ -27,20 +13,18 @@ class SiteController < ApplicationController
 
     puts @items.to_json
 
-    @markets = Market.all
+    
     
   	render template: "site/home"
   end
+
   def market
   	render template: "site/market_detail"
   end
   def items
   	render template: "site/items"
   end
-  def vendors
-    @vendors = Vendors.all
-    # Search for vendors with regions = @region
-  end
+
   def recipes
     @recipes = x 
   end

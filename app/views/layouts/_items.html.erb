@@ -1,20 +1,17 @@
-<table class="table table-hover">
-              
+<table class="table table-hover">  
+<%= @items.length %>   
+<%= @month %>    
+<%= @region.id %>         
 <% @items.each do |item| %>
   <tr>
     <td><img class="item_thumb" src="<%= item.image_url %>" alt=""/></td>
     <td><%= link_to item.name, item %></td>
- 
     <td>
       <div class="pull-right">
         <button class="btn btn-success btn-mini"><i class="icon-leaf"> More Info</i></button> 
         <button class="btn btn-mini">Find Recipes</button>
       </div>
     </td>
-   
   </tr>
 <% end %>
-
- 
-
 </table>

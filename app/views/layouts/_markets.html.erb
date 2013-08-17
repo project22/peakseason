@@ -37,7 +37,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
       <div class="media-body">
         <h4 class="media-heading"><%= market.name %></h4> 
         <p><%= market.address %></p>
-        <p><%= link_to 'View Market', region_market_path(@region, market) %></p>
+        <p><%= link_to 'View Market', region_market_path(@region.id, market) %></p>
         <p>
         <%= market.day_week %><br>from <%= market.start_time.strftime("%I:%M %p") %> - 
          <%= market.end_time.strftime("%I:%M %p") %>                 
