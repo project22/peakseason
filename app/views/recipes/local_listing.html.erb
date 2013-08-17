@@ -3,35 +3,20 @@
     <div class="span6">
       <div class="">
         <h3>Ingredients in Season Near You</h3>
-        <%= render 'layouts/items' %>
-        
-        
+        <%= render 'layouts/items' %>       
       </div>
     </div>
-
     <div class="span6">
       <div>
         <h3>Recipes</h3>
-        
-
-<% @recipes.each do |recipe|  %>
-    
+        <p><button class="btn btn-large btn-primary" type="button"><i class="icon-book"></i> Find Recipes</button></p>
+<% @recipes.each do |recipe|  %>    
     <a href="<%= recipe['f2f_url'] %>" target="recipe"><h4><%= recipe['title'] %></h4></a>
     <a href="<%= recipe['f2f_url'] %>" target="recipe"><img src="<%= recipe['image_url'] %>" width="250"></a>
     <p><a href="<%= recipe['f2f_url'] %>" target="recipe">View Recipe</a></p>
-
-<% end %>
-            
-
-
-
-
-       
-        
+<% end %>     
       </div>
     </div>
-
-
   </div>
 </div>
 
