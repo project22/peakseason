@@ -1,115 +1,54 @@
-    
- <div class="container-fluid">
-      <div class="row-fluid">
-        
-        <div class="span8">
-          
-                    
-                    <!--  Carousel - consult the Twitter Bootstrap docs at
-                http://twitter.github.com/bootstrap/javascript.html#carousel -->
-          <div id="this-carousel-id" class="carousel slide"><!-- class of slide for animation -->
-            <div class="carousel-inner">
-
-              <% my_index = 1 %>
-              <% @carousel_items.each do |item| %>
-              <% if my_index == 1 then
-                active_class = "active"
-              else
-                active_class = " "
-              end 
-              if my_index % 2 == 0 then
-                pull_class = "pull-right"
-              else
-                pull_class = ""
-              end
-              %>
-              <div class="item <%= active_class %>" style="background-image: url('<%= item.image_url %>');background-size:100%"><!-- class of active since it's the first item -->
-                
-                <div class="hero-unit hero-overlay <%= pull_class %>" >
-                  <h1><%= item.name %></h1>
-                  <p><%= item.name %> now in sesaon</p>
-                 
-                    <%= button_to "Learn More", item, :method => "get", :class => 'btn btn-success' %>
-
-                    
-   
-                  </p>
-                </div>
-              </div>
-              <% 
-              my_index = my_index +1
-              end %>
-
-
-             
-          <!--     <div class="item" id="item3">
-                <div class="hero-unit hero-overlay" >
-                  <h1>Heirloom Tomatoes</h1>
-                  <p>Heirloom Tomatoes  in sesaon</p>
-                  <p>
-                    <a class="btn btn-primary btn-large">
-                      Learn more
-                    </a>
-                  </p>
-                </div>
-              </div> -->
-
-            <!--   <div class="item" id="item4">
-                <div class="hero-unit hero-overlay pull-right" >
-                  <h1>Pistachios</h1>
-                  <p>Pistachios in sesaon</p>
-                  <p>
-                    <a class="btn btn-primary btn-large">
-                      Learn more
-                    </a>
-                  </p>
-                </div>
-              </div> -->
-            </div><!-- /.carousel-inner -->
-            <!--  Next and Previous controls below
-                  href values must reference the id for this carousel -->
-              <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
-              <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
-          </div><!-- /.carousel -->
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span8">
+      <div id="this-carousel-id" class="carousel slide">
+        <div class="carousel-inner">
+          <% my_index = 1 %>
+          <% @carousel_items.each do |item| %>
+          <% if my_index == 1 then
+            active_class = "active"
+          else
+            active_class = " "
+          end 
+          if my_index % 2 == 0 then
+            pull_class = "pull-right"
+          else
+            pull_class = ""
+          end
+          %>
+          <div class="item <%= active_class %>" style="background-image: url('<%= item.image_url %>');background-size:100%"><!-- class of active since it's the first item -->
+            
+            <div class="hero-unit hero-overlay <%= pull_class %>" >
+              <h1><%= item.name %></h1>
+              <p><%= item.name %> now in sesaon</p>                
+                <%= button_to "Learn More", item, :method => "get", :class => 'btn btn-success' %>
+              </p>
+            </div>
+          </div>
+          <% 
+          my_index = my_index +1
+          end %>
+        </div><!-- /.carousel-inner -->
+        <!--  Next and Previous controls below
+              href values must reference the id for this carousel -->
+          <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
+          <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
+      </div><!-- /.carousel -->
 
 <%= render 'layouts/markets' %>
-    
-        </div>
-        <div class="span4 sidebar">
-          
-          <div>
-          <!--   <h4><%= Date::MONTHNAMES[@month] %> in <%= @region %> <button class="btn btn-small">Change Location</button></h4> -->
-            <h3>What's in Season</h3>
-            
 
-<!--             <table class="table table-hover">
-          
-     
-            <% @items.each do |item| %>
-              <tr>
-                <td><img class="item_thumb" src="<%= item.image_url %>" alt=""/></td>
-                <td><%= link_to item.name, item %></td>
-             
-                <td>
-                  <div class="pull-right">
-                    <button class="btn btn-success btn-small"><i class="icon-leaf"> More Info</i></button> 
-                    <button class="btn btn-small"><i class="icon-plus"> Add to List</i></button>
-                  </div>
-                </td>
-               
-              </tr>
-            <% end %>
-
-             
-
-            </table> -->
-            <%= render 'layouts/items' %>
-          </div>
-
-        </div><!--/span-->
-
-      </div><!--/row-->
+    </div>
+    <div class="span4 sidebar">
       
+      <div>
+      <!--   <h4><%= Date::MONTHNAMES[@month] %> in <%= @region %> <button class="btn btn-small">Change Location</button></h4> -->
+        <h3>What's in Season</h3>
+          <%= render 'layouts/items' %>
+      </div>
+    </div><!--/span-->
+  </div><!--/row-->
+</div>
+  
 
 
 

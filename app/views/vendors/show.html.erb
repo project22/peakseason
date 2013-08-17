@@ -2,9 +2,9 @@
   <div class="row-fluid">      
     <div class="span4">
       <div class="">
-        <h2>Oxnard Farms</h2>
-        <img src="http://farm6.staticflickr.com/5184/5605341360_6bc03c913d_o.jpg" />
-        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+        <h2><%= @vendor.name %></h2>
+        <img src="<%= @vendor.image_url %>" />
+        <p><%= @vendor.description %></p>
         <div>Address with click to open mapping</div>
       </div>
       <div>Today | Wed, June 7 | Sat, June 13</div>
@@ -15,6 +15,8 @@
         <h3>Products</h3>
   
         <table class="table table-hover">
+          
+          <% @items.each do |item|  %>
           <tr>
             <td><img class="item_thumb" src="http://farm5.staticflickr.com/4079/4771120641_e3afc9ac2a_o.jpg" alt=""/></td>
             <td>Item Name</td>
@@ -24,77 +26,9 @@
                 <button class="btn btn-small"><i class="icon-plus"> Add to List</i></button>
               </div>
             </td>
-          </tr>            
-          <tr>
-            <td><img class="item_thumb" src="http://farm3.staticflickr.com/2472/3900306230_ed2796bf90_o.jpg" alt=""/></td>
-            <td>Item Name</td>
-            <td>
-              <div class="pull-right">
-                <button class="btn btn-success btn-small"><i class="icon-leaf"> More Info</i></button> 
-                <button class="btn btn-small"><i class="icon-plus"> Add to List</i></button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><img class="item_thumb" src="http://farm1.staticflickr.com/134/362660326_a13bc1c2b0_o.jpg" alt=""/></td>
-            <td>Item Name</td>
-            <td>
-              <div class="pull-right">
-                <button class="btn btn-success btn-small"><i class="icon-leaf"> More Info</i></button> 
-                <button class="btn btn-small"><i class="icon-plus"> Add to List</i></button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><img class="item_thumb" src="http://farm5.staticflickr.com/4116/4890326540_852094b44b_o.jpg" alt=""/></td>
-            <td>Item Name</td>
-            <td>
-              <div class="pull-right">
-                <button class="btn btn-success btn-small"><i class="icon-leaf"> More Info</i></button> 
-                <button class="btn btn-small"><i class="icon-plus"> Add to List</i></button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><img class="item_thumb" src="http://farm5.staticflickr.com/4079/4771120641_e3afc9ac2a_o.jpg" alt=""/></td>
-            <td>Item Name</td>
-            <td>
-              <div class="pull-right">
-                <button class="btn btn-success btn-small"><i class="icon-leaf"> More Info</i></button> 
-                <button class="btn btn-small"><i class="icon-plus"> Add to List</i></button>
-              </div>
-            </td>
-          </tr>            
-          <tr>
-            <td><img class="item_thumb" src="http://farm3.staticflickr.com/2472/3900306230_ed2796bf90_o.jpg" alt=""/></td>
-            <td>Item Name</td>
-            <td>
-              <div class="pull-right">
-                <button class="btn btn-success btn-small"><i class="icon-leaf"> More Info</i></button> 
-                <button class="btn btn-small"><i class="icon-plus"> Add to List</i></button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><img class="item_thumb" src="http://farm1.staticflickr.com/134/362660326_a13bc1c2b0_o.jpg" alt=""/></td>
-            <td>Item Name</td>
-            <td>
-              <div class="pull-right">
-                <button class="btn btn-success btn-small"><i class="icon-leaf"> More Info</i></button> 
-                <button class="btn btn-small"><i class="icon-plus"> Add to List</i></button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><img class="item_thumb" src="http://farm5.staticflickr.com/4116/4890326540_852094b44b_o.jpg" alt=""/></td>
-            <td>Item Name</td>
-            <td>
-              <div class="pull-right">
-                <button class="btn btn-success btn-small"><i class="icon-leaf"> More Info</i></button> 
-                <button class="btn btn-small"><i class="icon-plus"> Add to List</i></button>
-              </div>
-            </td>
-          </tr>
+          </tr>    
+          <% end %>        
+         
 
         </table>
       </div>

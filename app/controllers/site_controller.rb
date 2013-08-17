@@ -1,10 +1,12 @@
 class SiteController < ApplicationController
   def home
     @month = Date.today.month
-    @region = session[:region]
-    # @region = @@region 
+
+    # @region = session[:region]
+    @region = Region.where(name: "California")
 
     my_flickr = FlickrLib.new
+
   	@items = Item.where(:season_start.lte => @month,  :season_end.gte => @month, :region => @region )
     # @items = Item.all
     # @items = @items.map do |item|
@@ -26,7 +28,7 @@ class SiteController < ApplicationController
     puts @items.to_json
 
     @markets = Market.all
-    @region =
+    
   	render template: "site/home"
   end
   def market

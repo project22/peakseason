@@ -49,13 +49,16 @@ overflow: hidden;
   position: absolute;
   opacity:0.9;
   filter:alpha(opacity=90); /* For IE8 and earlier */ 
-
-
 }
 
-body { padding-top: 40px; }
+body { padding-top: 50px; }
 @media screen and (max-width: 768px) {
     body { padding-top: 0px; }
+}
+.vertical_scroll {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height:650px; 
 }
 
  

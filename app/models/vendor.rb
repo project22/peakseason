@@ -4,7 +4,7 @@ class Vendor
 
   has_and_belongs_to_many :markets
   belongs_to :region
-  embeds_many :items
+  embeds_many :vendor_items
 
   field :name, type: String
   field :url, type: String
@@ -13,7 +13,6 @@ class Vendor
 
   field :twitter_id, type: String  
 
-  field :item_name, type: String
   
 
 end

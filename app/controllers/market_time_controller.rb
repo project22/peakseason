@@ -1,0 +1,2 @@
+class MarketTimeController < ApplicationController
+end

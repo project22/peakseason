@@ -9,7 +9,9 @@ class ApplicationController < ActionController::Base
   private
   def set_user_vars
 
-  session[:region]="California"
+  # session[:region]="California"
+  @region = Region.where(name: "California")
+
   session[:month]= Date.today.month
   # geocoded_by :ip_address
 

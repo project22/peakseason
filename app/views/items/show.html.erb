@@ -47,12 +47,12 @@
                 active_class = " "
               end           
               %>
-              <div class="item <%= active_class %>" style="background-image: url('<%= recipe['image_url'] %>'); background-size:100%; height: 200px;    background-repeat:no-repeat; background-position:center center; background-color:#000">
+              <div class="item <%= active_class %>" style="cursor:pointer; background-image: url('<%= recipe['image_url'] %>'); background-size:100%; height: 200px;    background-repeat:no-repeat; background-position:center center; background-color:#000" onclick="window.open('<%= recipe["source_url"] %>');" >
                 
 
                 
                 <div class="well well-small recipe_label">
-                  <a href="<%= recipe['f2f_url'] %>" target="recipe"><strong><%= recipe['title'] %></strong></a>
+                  <a href="<%= recipe['source_url'] %>" target="recipe"><strong><%= recipe['title'] %></strong></a>
                 </div>
               </div>
               

@@ -1,15 +1,17 @@
-<%= form_for(@market) do |f| %>
-  <% if @market.errors.any? %>
+
+<%= form_for([@region, @vendor]) do |f| %>
+  <% if @region.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@market.errors.count, "error") %> prohibited this market from being saved:</h2>
+      <h2><%= pluralize(@region.errors.count, "error") %> prohibited this market from being saved:</h2>
 
       <ul>
-      <% @market.errors.full_messages.each do |msg| %>
+      <% @region.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
+
 
   <div class="field">
     <%= f.label :name %><br>
@@ -19,26 +21,21 @@
     <%= f.label :url %><br>
     <%= f.text_field :url %>
   </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
-  </div>
+
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_field :description %>
   </div>
   <div class="field">
-    <%= f.label :day_week %><br>
-    <%= f.text_field :day_week %>
+    <%= f.label :image_url %><br>
+    <%= f.text_field :image_url %>
   </div>
   <div class="field">
-    <%= f.label :start_time %><br>
-    <%= f.text_field :start_time %>
+    <%= f.label :twitter_id %><br>
+    <%= f.text_field :twitter_id %>
   </div>
-  <div class="field">
-    <%= f.label :end_time %><br>
-    <%= f.text_field :end_time %>
-  </div>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

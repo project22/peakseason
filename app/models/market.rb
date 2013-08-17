@@ -2,8 +2,9 @@ class Market
  include Mongoid::Document
  include Mongoid::Timestamps
 
-	has_one :region
-	has_many :vendors
+	belongs_to :region, :inverse_of => nil
+	has_and_belongs_to_many :vendors, :inverse_of => nil
+	embeds_many :market_times
 
  field :name, 	type: String
  field :image_url, type: String

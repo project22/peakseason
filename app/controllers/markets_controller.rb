@@ -2,82 +2,71 @@
 class MarketsController < ApplicationController
   before_action :set_market, only: [:show, :edit, :update, :destroy]
 
-
-
-  # GET /market
-  # GET /market.json
+  # GET /regions/market
   def index
-    @markets = Market.all
+    # @region = Region.find(params[:region_id])
+    # @markets = @region.markets.all
   end
 
-  def local_listing
-  	@markets = Market.all
-  	# This one needs to filter by only those in local region.
-  	# nested something
+  # GET /local_listing
+  # def local_listing
+  # 	# @markets = Market.all
+  # 	# This one needs to filter by only those in local region.
+  # 	# nested something
+  # end
 
-  end
-
-  # GET /markets/1
-  # GET /markets/1.json
+  # GET /regions/markets/1
   def show
-    @items = Item.all
+    # @region = Region.find(params[:region_id])
+    @items = @region.items.all
     # This needs to be replaced with only items in this market.
-    @vendors = Vendor.all
+    @vendors =  @region.vendors.all
   end
 
-  # GET /markets/new
+  # GET /regions/markets/new
   def new
-    @market = Market.new
+    # @region = Region.find(params[:region_id])
+    @market = @region.markets.new
+    # @market = Market.new
   end
 
   # GET /regions/1/edit
   def edit
+
   end
 
-  # POST /markets
-  # POST /markets.json
+  # POST /regions/markets
   def create
-    @market = Market.new(market_params)
-
-    respond_to do |format|
-      if @market.save
-        format.html { redirect_to @market, notice: 'Region was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @market }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @market.errors, status: :unprocessable_entity }
-      end
+    @market = Market.new(market_params) 
+    if @market.save
+      redirect_to @market, notice: 'Region was successfully created.'   
+    else
+     render action: 'new' 
     end
+    
   end
 
-  # PATCH/PUT /markets/1
-  # PATCH/PUT /markets/1.json
+  # PATCH/PUT /regions/markets/:id
   def update
-    respond_to do |format|
-      if @market.update(market_params)
-        format.html { redirect_to @market, notice: 'Market was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @market.errors, status: :unprocessable_entity }
-      end
+    if @market.update(market_params)
+      redirect_to @market, notice: 'Market was successfully updated.' 
+    else
+      render action: 'edit' 
     end
   end
 
-  # DELETE /markets/1
-  # DELETE /markets/1.json
+  # DELETE /regions/markets/:id
   def destroy
     @market.destroy
-    respond_to do |format|
-      format.html { redirect_to markets_url }
-      format.json { head :no_content }
-    end
+    redirect_to markets_url   
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_market
-      @market = Market.find(params[:id])
+      @region = Region.find(params[:region_id])
+      @markets = @region.markets.all
+      @market = @region.markets.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

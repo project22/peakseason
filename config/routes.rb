@@ -1,31 +1,33 @@
 PeakSeason::Application.routes.draw do
 
-  resources :regions do
+  resources :regions do 
     resources :markets do
-      resources :vendors
+      resources :market_times
     end
+    resources :vendors
   end
-  resources :markets
-  resources :vendors
+  
   resources :items
+  # has many regions
+  # belongs to many regions
 
-  get "/local_items" => "items#local_listing"
-  get "/local_markets" => "markets#local_listing"
-  get "/local_vendors" => "vendors#local_listing"
+  # get "/local_items" => "items#local_listing"
+  # get "/local_markets" => "markets#local_listing"
+  # get "/local_vendors" => "vendors#local_listing"
 
   get "/local_recipes" => "recipes#local_listing"
-  get "/local_recipes/:q" => "recipes#local_listing"
-  get "/recipes_json/:q" => "recipes#recipes_json"
+  # get "/local_recipes/:q" => "recipes#local_listing"
+  # get "/recipes_json/:q" => "recipes#recipes_json"
 
-  get "/seasons" => "items#yearview"
+  # get "/seasons" => "items#yearview"
 
   # get "site/welcome"
   root :to  => "site#home"
 
-  get "/market/:id" => 'markets#show'
+  # get "/markets/:id" => 'markets#show'
  
 # This makes no good sense
-  get "/region/:id/items/:id" => 'items#show'
+# get "/regions/:id/items/:id" => 'items#show'
 
 
   

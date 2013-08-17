@@ -1,29 +1,51 @@
  <div class="row-fluid">
-            <div class="span7">
-             
-              <img src="http://maps.googleapis.com/maps/api/staticmap?center=Los+Angeles+California&zoom=13&size=800x500&maptype=roadmap
-        &markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318
-        &markers=color:red%7Ccolor:red%7Clabel:C%7C40.718217,-73.998284&sensor=false">
-            </div>
-            <div class="span5">
+  <div class="span7">     
+    <div id="map-canvas" style="width:300px; height:300px;">map here</div>
 
+    <link href="http://maps.googleapis.com/maps/documentation/javascript/examples/default.css" rel="stylesheet">
+    <script src="http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>
+function initialize() {
+  var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+  var mapOptions = {
+    zoom: 4,
+    center: myLatlng,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  }
+  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+  var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      title: 'Hello World!'
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+
+  </div>
+  <div class="span5">
 <% @markets.each do |market| %>
-              <div class="media">
-                <a class="pull-left" href="#">
-                  <span class="thumb_container">
-                  <img class="media-object thumb" data-src="holder.js/64x64" width="100" src="<%= market.image_url %>">
-                  </span>
-                </a>
-                <div class="media-body">
-                  <h4 class="media-heading"><%= link_to market.name, market %></h4> 
-
-                  <%= market.start_time.strftime("%I:%M %p") %> - 
-                  <%= market.end_time.strftime("%I:%M %p") %>,
-                  <%= market.day_week %>
-                 <!--  <p><%= market.description %></p> -->
-                </div>
-              </div>
+    <div class="media">
+      <a class="pull-left" href="#">
+        <span class="thumb_container">
+        <img class="media-object thumb" data-src="holder.js/64x64" width="100" src="<%= market.image_url %>">
+        </span>
+      </a>
+      <div class="media-body">
+        <h4 class="media-heading"><%= market.name %></h4> 
+        <p><%= market.address %></p>
+        <p><%= link_to 'View Market', region_market_path(@region, market) %></p>
+        <p>
+        <%= market.day_week %><br>from <%= market.start_time.strftime("%I:%M %p") %> - 
+         <%= market.end_time.strftime("%I:%M %p") %>                 
+        </p>
+       <!--  <p><%= market.description %></p> -->
+      </div>
+    </div>
 <% end %>
-            </div>
-          </div>
+  </div>
+</div>
 

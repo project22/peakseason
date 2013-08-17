@@ -33,18 +33,11 @@
     <!-- For all other devices -->
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
-    <style type="text/css">
-    divs {
-      border-style:solid;
-      border-width: 1px;
-    }
-    </style>
     <%= javascript_include_tag "application" %>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+ 
 
   </head>
-  <body>
-
+  <body >
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
@@ -55,37 +48,26 @@
           </a>
           <a class="brand" href="/">In Peak Season <i class="icon-leaf"></i></a>
           <div class="container-fluid nav-collapse">
-            <ul class="nav">
-
-              <!-- <li><%= link_to "In Season", "/local_items"  %></li> -->
+            <ul class="nav">         
               <li><%= link_to "Local Markets", "/local_markets"  %></li>
-              <!-- <li><%= link_to "Local Vendors", "/local_vendors"  %></li> -->
-              <li><%= link_to "Find Recipes", "/local_recipes"  %></li>
-            
-            
-              
+              <li><%= link_to "Find Recipes", "/local_recipes"  %></li>           
             </ul>
             <ul class="nav pull-right">
-
-            
               <li class="dropdown pull-right">
                 <a href="#" class="dropdown-toggle pull-right" data-toggle="dropdown">
                   <%
                   @month = session[:month]
-                  @region = session[:region]
+                  @region = Region.find_by(name: "California")
                   %>
-                <%= Date::MONTHNAMES[@month] %> in <%= @region %>
+                <%= Date::MONTHNAMES[@month] %> in <%= @region.name %>
                 <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
                   <li><a href="#"><i class="icon-refresh"></i> Reset Region</a></li>  
                   <li><a href="#"><i class="icon-globe"></i> Choose Region</a></li> 
                 </ul>
-              </li>
-            
-              
-            </ul>
-            
+              </li>              
+            </ul>            
           </div>
           <!--/.nav-collapse -->
         </div>
@@ -99,17 +81,12 @@
 
 <!--     </div>  -->
     <!-- /container -->
-<footer>
-  <hr>
+    <footer>
+      <hr>
       <div class="container">
         <p>&copy; 2013, J.Piz.  All rights reserved.</p>
       </div>
     </footer>
-    <!-- Javascripts
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-
-
   </body>
 </html>
 
