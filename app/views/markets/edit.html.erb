@@ -2,7 +2,7 @@
 	<h1>Editing Market</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @market %> |
-<%= link_to 'Back', region_markets_path %>
+Add list of times.  Can destroy or add here.  Add opens a new form.  Destroy redirects to this page.
+<%= link_to 'Show', region_market_path(@region, @market) %> |
+<%= link_to 'Back', region_markets_path(@region) %>
 </div>

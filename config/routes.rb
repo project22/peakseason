@@ -5,6 +5,8 @@ PeakSeason::Application.routes.draw do
       resources :market_times
     end
   end
+
+  # resources :markets
   
   resources :items
   # has many regions
@@ -15,6 +17,11 @@ PeakSeason::Application.routes.draw do
 
 
   get "/local_recipes" => "recipes#local_listing"
+  get "/local_markets" => "markets#localmarkets"
+  get "/markets/:id" => "markets#detail"
+
+  get "/geocoder" => "markets#geocoder"
+  get "/getmarkets" => 'markets#getmarkets'
   # get "/local_recipes/:q" => "recipes#local_listing"
   # get "/recipes_json/:q" => "recipes#recipes_json"
 

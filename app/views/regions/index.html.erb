@@ -21,10 +21,10 @@
         <td><%= link_to 'Show', region %></td>
         <td><%= link_to 'Edit', edit_region_path(region) %></td>
         <td><%= link_to 'Destroy', region, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'View Markets', region_markets_path(region.id) %>
+        <td><%= link_to 'View Markets', region_markets_path(@region) %>
           <%= link_to ':V2', "/regions/#{region.id}/markets" %></td>
         
-        <td><%= link_to 'View Items', items_path(region.id) %></td>
+        <td><%= link_to 'View Items', items_path(@region) %></td>
         
       </tr>
     <% end %>

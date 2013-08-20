@@ -13,13 +13,14 @@
           if my_index % 2 == 0 then
             pull_class = "pull-right"
           else
-            pull_class = ""
+            pull_class = "pull-left"
           end
           %>
           <div class="item <%= active_class %>" style="background-image: url('<%= item.image_url %>');background-size:100%"><!-- class of active since it's the first item -->
             
             <div class="hero-unit hero-overlay <%= pull_class %>" >
-              <h1><%= item.name %></h1>
+              <h1 class ="hero_font" style="font-size:4.9em;"><%= item.name %></h1>
+          
               <p><%= item.name %> now in sesaon</p>                
                 <%= button_to "Learn More", item, :method => "get", :class => 'btn btn-success' %>
               </p>
@@ -34,12 +35,10 @@
           <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
           <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
       </div><!-- /.carousel -->
-
-<%= render 'layouts/markets' %>
-
+      <h3>Markets Near You</h3>
+none
     </div>
-    <div class="span4 sidebar">
-      
+    <div class="span4 sidebar">    
       <div>
       <!--   <h4><%= Date::MONTHNAMES[@month] %> in <%= @region %> <button class="btn btn-small">Change Location</button></h4> -->
         <h3>What's in Season</h3>
@@ -49,8 +48,3 @@
   </div><!--/row-->
 </div>
   
-
-
-
-
-

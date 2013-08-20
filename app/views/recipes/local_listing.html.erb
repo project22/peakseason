@@ -1,3 +1,20 @@
+<script type="text/javascript">
+$(document).ready {
+  // make a class for the divs.
+  // Listen for the class to be clicked on.  Search about identify the contents of "this" class.
+  // On click of a div, get the contents of a particular part of the HTML that has name of item.
+  // Add it to the an search var array
+  // on off click of a div remove that item from the array.
+
+  // On click of seach, pass that array by ajax to my API for recipes
+  // Iterated over returned object into the div that outputs the recipes.
+
+
+
+}
+</script>
+
+
 <div class="container-fluid">
   <div class="row-fluid">      
     <div class="span6">
@@ -10,11 +27,13 @@
       <div>
         <h3>Recipes</h3>
         <p><button class="btn btn-large btn-primary" type="button"><i class="icon-book"></i> Find Recipes</button></p>
+        <div id="output_recipes">
 <% @recipes.each do |recipe|  %>    
     <a href="<%= recipe['f2f_url'] %>" target="recipe"><h4><%= recipe['title'] %></h4></a>
     <a href="<%= recipe['f2f_url'] %>" target="recipe"><img src="<%= recipe['image_url'] %>" width="250"></a>
     <p><a href="<%= recipe['f2f_url'] %>" target="recipe">View Recipe</a></p>
-<% end %>     
+<% end %> 
+        </div>    
       </div>
     </div>
   </div>

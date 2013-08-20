@@ -4,18 +4,28 @@
 
 
 .hero-overlay {
-  width: 45%;
+  
   /*height: 200px;*/
   position: relative;
   top: 20px;
   margin-left: 20px;
   margin-right: 20px;
+  padding: 20px 50px;
   opacity:0.9;
   filter:alpha(opacity=90); /* For IE8 and earlier */
 
+
+}
+.banner_font {
+  font-size:2.9em;
+  font-family: 'Arizonia', cursive;
+}
+.hero_font {
+  font-size:4.9em;
+  font-family: 'Arizonia', cursive;
 }
 .item {
-  height: 400px;
+  height: 350px;
   /*padding: 20px*/
 }
 .item_thumb {
@@ -51,7 +61,7 @@ overflow: hidden;
   filter:alpha(opacity=90); /* For IE8 and earlier */ 
 }
 
-body { padding-top: 50px; }
+body { padding-top: 40px; }
 @media screen and (max-width: 768px) {
     body { padding-top: 0px; }
 }

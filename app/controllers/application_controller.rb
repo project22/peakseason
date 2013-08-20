@@ -9,23 +9,30 @@ class ApplicationController < ActionController::Base
   private
   def set_user_vars
 
+  # Find user's location with browser geofinder
+  @user_location
 
-  
+    # Get region by passing user_location to geocoder gem
   @region = Region.find_by(name: "California")
 
+
   session[:month]= Date.today.month
+  # session[:month]= 2
   @month = session[:month]
   @items = Item.where(:season_start.lte => @month,  :season_end.gte => @month, :region => @region.name )
-  @markets = Market.where(:region => @region)
-  # geocoded_by :ip_address
 
-  # @@region= request.location.city
+  search_radius = 20
+  @zip = "90210"
+  
+  # Use geocoder to fill this with markets within search_radius
+  # @markets = Market.where(:region => @region)
 
-  # @@regions = Region.all
-  # @@month = Date.today.month
-  # @@month = 4
-  # @@local_markets=Market.all
-  # session[:local_markets] ||= Market.all
+ 
+    
+
+
+
+
   end
   # def month
   # 	8

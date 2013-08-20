@@ -1,0 +1,24 @@
+
+<tr>
+  <td><%= select_tag "market[market_time][day][]", options_for_select(MarketTime.get_days_array, time.day) %></td>
+  <td><%= time_field_tag "market[market_time][start_time][]" %></td>
+  <td><%= time_field_tag "market[market_time][end_time][]" %></td>
+
+  <td><%= select_tag "market[market_time][start_month][]", options_for_select(MarketTime.get_months_array) %></td>
+  <td><%= number_field_tag "market[market_time][start_day][]" %></td>
+  <td><%= select_tag "market[market_time][end_month][]", options_for_select(MarketTime.get_months_array) %></td>
+  <td><%= number_field_tag "market[market_time][end_day][]" %></td>
+ </tr>
+  
+
+
+<!--   field :day, type: Integer
+  field :start_time, type: Time
+  field :end_time, type: Time
+  
+  field :start_month, type: Integer
+  field :start_day, type: Integer
+  field :end_month, type: Integer
+  field :end_day, type: Integer
+ -->
+    

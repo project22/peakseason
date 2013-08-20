@@ -1,0 +1,2 @@
+<%= market.day_week %><br>from <%= market.start_time.strftime("%I:%M %p") %> - 
+         <%= market.end_time.strftime("%I:%M %p") %>   

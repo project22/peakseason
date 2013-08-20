@@ -1,3 +1,4 @@
+
 <div class="container">
 <h1>Markets in <%= @region.name %></h1>
 
@@ -9,9 +10,7 @@
       <th>URL</th>
       <th>Address</th>
       <th>Description</th>
-      <th>Day of Week</th>
-      <th>Start Time</th>
-      <th>End Time</th>
+
       <th></th>
       <th></th>
       <th></th>
@@ -24,17 +23,12 @@
         <td><%= market.name %></td>
         <td><img class="media-object" data-src="holder.js/64x64" width="100" src="<%= market.image_url %>"></td>
         <td><%= market.url %></td>
-
         <td><%= market.address %></td>
         <td><%= market.description %></td>
-        <td><%= market.day_week %></td>
-        <td><%= market.start_time %></td>
-        <td><%= market.end_time %></td>
 
         <td><%= link_to 'Show', region_market_path(@region, market) %></td>
         <td><%= link_to 'Edit', edit_region_market_path(@region, market) %></td>
-        <td><%= link_to 'Destroy', region_market_path(@region, market), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-       
+        <td><%= link_to 'Destroy', region_market_path(@region, market), method: :delete, data: { confirm: 'Are you sure?' } %></td>       
       </tr>
     <% end %>
   </tbody>
@@ -42,7 +36,42 @@
 
 <br>
 
-<%= link_to 'New Market', new_region_market_path %>
+<%= link_to 'New Market', new_region_market_path(@region) %>
 </div>
 
+<script type="text/javascript">
+myresult= getResults('90210');
+console.log(myresult);
+searchResultsHandler(myresult);
 
+function getResults(zip) {
+    // or
+    // function getResults(lat, lng) {
+    $.ajax({
+        type: "GET",
+        contentType: "application/json; charset=utf-8",
+        // submit a get request to the restful service zipSearch or locSearch.
+        url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + zip,
+        // or
+        // url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/locSearch?lat=" + lat + "&lng=" + lng,
+        dataType: 'jsonp',
+        jsonpCallback: 'searchResultsHandler'
+    });
+}
+
+function searchResultsHandler(searchresults) {
+    for (var key in searchresults) {
+        // alert(key);
+        var results = searchresults[key];
+        for (var i = 0; i < results.length; i++) {
+            var result = results[i];
+            for (var key in result) {
+                //only do an alert on the first search result
+                if (i == 0) {
+                    console.log(result[key]);
+                }
+            }
+        }
+    }
+}
+</script>

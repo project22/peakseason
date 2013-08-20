@@ -1,29 +1,29 @@
 <div class="container-fluid">
   <div class="row-fluid">      
     <div class="span6">
-      
-      <h2><%= @market.name %></h2>
-      
+      <h2><%= @market.name %></h2
         <img src="<%= @market.image_url %>" >
         <p><%= @market.description %></p>
         <p>
-        <%= @market.start_time.strftime("%I:%M %p") %> - 
-        <%= @market.end_time.strftime("%I:%M %p") %>,
-        <%= @market.day_week %>
+    
         </p>
         <a href="http://maps.google.com/maps?saddr=<%= @market.address %>" target="mrk_directions"><p><%= @market.address %></p>
         <img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= URI.escape(@market.address) %>&zoom=13&size=800x500&maptype=roadmap
-        &markers=color:green%7Clabel:%7C<%= URI.escape(@market.address) %>&sensor=false"></a>
-          
+        &markers=color:green%7Clabel:%7C<%= URI.escape(@market.address) %>&sensor=false"></a>       
     </div>
     <div class="span6">
-      <div>
-        <h3>Selling at this market</h3>
-  
-        <%= render 'layouts/items' %>
-      </div>
+     <h3>Market Times</h3>
+      <table class="table">
+      <% @times.each do |time| %>
+      <tr>
+        <td><%= time.day %></td>
+        <td><%= time.start_time %></td>
+        <td><%= time.end_time %></td>   
+      </tr>
+      <% end %>
+     
+    </table>
     </div>
-
   </div>
 </div>
  

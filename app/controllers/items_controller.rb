@@ -1,6 +1,4 @@
 class ItemsController < ApplicationController
-  
-  
 
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
@@ -8,24 +6,16 @@ class ItemsController < ApplicationController
     @items = Item.all
   end
 
-  def yearview
-  end
-
-
   # GET /items
-  # GET /items.json
   def index
     @items = Item.all
   end
 
   # GET /items/1
-  # GET /items/1.json
   def show
     # both these queries need to be filtered by the item
-    @markets = Market.all
-
-    
-    
+    # @markets = Market.all
+ 
     rec_loader = Rec.new
     # ings = params[:q]
     ings = params[:q]
@@ -38,6 +28,27 @@ class ItemsController < ApplicationController
     # my_item = Post.find(params[:name])
     # ings = params[my_item]
     # @recipes = rec_loader.get_rec(ings)
+    @markets = []
+   
+    # @zip is set in ApplicationController
+    url = "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + @zip
+     
+    market_list = HTTParty.get(url)
+  
+     # newlist = JSON.parse(market_list.body)
+     JSON.parse(market_list.body)["results"].each do |item|
+       # @market_array.push(item["id"])
+
+       # url = "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=" + item["id"]
+       # market_detail = HTTParty.get(url)
+
+       # market = JSON.parse(market_detail.body)["marketdetails"]
+       # market["marketname"] = item["marketname"]
+       @markets.push(item)
+
+       # puts item["id"]
+     end
+
   end
 
   # GET /items/new
@@ -50,7 +61,6 @@ class ItemsController < ApplicationController
   end
 
   # POST /items
-  # POST /items.json
   def create
     # get the name and region first and then manually extract and insert into data, the fields for month from the hash.
     data=item_params
@@ -59,39 +69,26 @@ class ItemsController < ApplicationController
 
     @item = Item.new(data)
 
-    respond_to do |format|
-      if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @item }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
+    if @item.save
+      format.html { redirect_to @item, notice: 'Item was successfully created.' }      
+    else
+      format.html { render action: 'new' }
     end
   end
 
   # PATCH/PUT /items/1
-  # PATCH/PUT /items/1.json
   def update
-    respond_to do |format|
-      if @item.update(item_params)
-        format.html { redirect_to items_path, notice: 'Item was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
+    if @item.update(item_params)
+      format.html { redirect_to items_path, notice: 'Item was successfully updated.' }
+    else
+      format.html { render action: 'edit' }
     end
   end
 
   # DELETE /items/1
-  # DELETE /items/1.json
   def destroy
     @item.destroy
-    respond_to do |format|
-      format.html { redirect_to items_url }
-      format.json { head :no_content }
-    end
+    format.html { redirect_to items_url }
   end
 
   private

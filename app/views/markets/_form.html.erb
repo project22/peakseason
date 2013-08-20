@@ -1,8 +1,8 @@
-<%= form_for(@market) do |f| %>
+<%= form_for([@region, @market])  do |f| %>
+<!-- WHATS WRONG HERE? -->
   <% if @market.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@market.errors.count, "error") %> prohibited this market from being saved:</h2>
-
       <ul>
       <% @market.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -29,19 +29,23 @@
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.text_area :description %>
   </div>
-  <div class="field">
-    <%= f.label :day_week %><br>
-    <%= f.text_field :day_week %>
-  </div>
-  <div class="field">
-    <%= f.label :start_time %><br>
-    <%= f.text_field :start_time %>
-  </div>
-  <div class="field">
-    <%= f.label :end_time %><br>
-    <%= f.text_field :end_time %>
+  <div>
+  <table class="table">
+    <tr>
+      <th>Day of Week</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th>Season Start</th>
+      <th>Day</th>
+      <th>Season End</th>
+      <th>Day</th>
+    </tr>
+  <% @market.market_times.each do |mt| %>
+    <%= render "market_times", :time => mt %>
+  <% end %>
+  </table>
   </div>
   <div class="actions">
     <%= f.submit %>
