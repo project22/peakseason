@@ -70,7 +70,7 @@ class ItemsController < ApplicationController
     @item = Item.new(data)
 
     if @item.save
-      format.html { redirect_to @item, notice: 'Item was successfully created.' }      
+      format.html { redirect_to @item }      
     else
       format.html { render action: 'new' }
     end
@@ -79,7 +79,7 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1
   def update
     if @item.update(item_params)
-      format.html { redirect_to @item, notice: 'Item was successfully created.' } 
+      format.html { redirect_to items_url, notice: 'Item was successfully created.' } 
     else
       format.html { render action: 'edit' }
     end
