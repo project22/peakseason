@@ -79,7 +79,7 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1
   def update
     if @item.update(item_params)
-      format.html { redirect_to items_path, notice: 'Item was successfully updated.' }
+      format.html { redirect_to @item, notice: 'Item was successfully created.' } 
     else
       format.html { render action: 'edit' }
     end

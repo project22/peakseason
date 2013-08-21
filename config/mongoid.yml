@@ -74,3 +74,19 @@ test:
         # low amounts for fast failures.
         max_retries: 1
         retry_interval: 0
+
+production:
+
+  sessions:
+    default:
+      database: inpeakseason
+      hosts:
+        - ds041208.mongolab.com:41208
+      username: herokuinpeakseason  
+      password: flow00ps
+      options:
+        consistency: :strong
+        # In the test environment we lower the retries and retry interval to
+        # low amounts for fast failures.
+        max_retries: 1
+        retry_interval: 0
