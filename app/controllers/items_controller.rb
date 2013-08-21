@@ -99,7 +99,7 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :region, :image_url, :season_start, :season_end)
+      params.require(:item).permit(:name, :region, :image_url, :season_start, :season_end, :description)
       # removed the season_end and season_start, because they came in as hashes.  Lame.
     end
 end

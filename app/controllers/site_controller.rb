@@ -13,7 +13,28 @@ class SiteController < ApplicationController
 
     puts @items.to_json
 
-    
+    @markets = []
+   
+    @markets = []
+   
+    # @zip is set in ApplicationController
+    url = "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + @zip
+     
+    market_list = HTTParty.get(url)
+  
+     # newlist = JSON.parse(market_list.body)
+     JSON.parse(market_list.body)["results"].each do |item|
+       # @market_array.push(item["id"])
+
+       # url = "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=" + item["id"]
+       # market_detail = HTTParty.get(url)
+
+       # market = JSON.parse(market_detail.body)["marketdetails"]
+       # market["marketname"] = item["marketname"]
+       @markets.push(item)
+
+       # puts item["id"]
+     end
     
   	render template: "site/home"
   end

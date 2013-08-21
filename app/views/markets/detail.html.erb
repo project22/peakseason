@@ -7,11 +7,12 @@ my_address = URI.escape(@market['Address'])
 		<div class="span6">
 			<a href="<%= @market['GoogleLink'] %>"><img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= my_address %>&zoom=13&size=600x600&maptype=roadmap
 		&markers=color:blue%7Clabel:Market%7C<%= my_address %>&markers=color:green%7Clabel:G%7C40.711614,-74.012318
-		&markers=color:red%7Ccolor:red%7Clabel:C%7C40.718217,-73.998284&sensor=false"></a>
+		&markers=color:red%7Ccolor:red%7Clabel:C%7C40.718217,-73.998284&sensor=false" target="map"></a>
 		</div>
 		<div class="span6">
+			<h3><%= URI.unescape(@market_name) %></h3>
 			<p><%= @market['Schedule'] %></p>
-			<p><%= @market['Address'] %></p>
+			<p><a href="<%= @market['GoogleLink'] %>"><%= @market['Address'] %></a></p>
 			<p><%= @market['Description'] %></p>
 			<p><%= @market['Products'] %></p>
 		</div>

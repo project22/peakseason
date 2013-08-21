@@ -4,7 +4,7 @@
 
   <ul class="nav nav-tabs nav-stacked">
 <% @markets.each do |market| %>
-    <li><a href="/markets/<%= market['id'] %>"><%= market['marketname'] %></a></li>
+    <li><a href="/markets/<%= market['id'] %>/<%= URI::escape(market['marketname'][3..50]) %>"><%= market['marketname'][3..50] %>  (<%= market['marketname'][0..3] %> miles away)</a></li>
 <% end %>
   </ul>
 </div>

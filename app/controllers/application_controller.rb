@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 
 
   session[:month]= Date.today.month
-  # session[:month]= 2
+  # session[:month]= 4
   @month = session[:month]
   @items = Item.where(:season_start.lte => @month,  :season_end.gte => @month, :region => @region.name )
 

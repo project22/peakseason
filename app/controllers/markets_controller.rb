@@ -93,7 +93,9 @@ class MarketsController < ApplicationController
   def detail
     # @market 
    
+    puts params
     market_id = params[:id]
+    @market_name = params[:name]
     
     url = "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=" + market_id
     market_detail = HTTParty.get(url)

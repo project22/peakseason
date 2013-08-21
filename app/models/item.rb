@@ -9,4 +9,5 @@ class Item
   field :season_end, type: Integer
   field :region, type: String
   field :image_url, type: String
+  field :description, type: String
 end
