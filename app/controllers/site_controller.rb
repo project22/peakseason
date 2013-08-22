@@ -28,8 +28,8 @@ class SiteController < ApplicationController
     lng = request.location.longitude.to_s
     puts "lat:" + request.location.latitude.to_s + "lng:" + request.location.longitude.to_s
 
-    lat = "34.0219"
-    lng = "-118.4814"
+    # lat = "34.0219"
+    # lng = "-118.4814"
     url = "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/locSearch?lat=" + lat + "&lng=" + lng
     puts url
      
