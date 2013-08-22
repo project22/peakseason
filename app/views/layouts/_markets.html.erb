@@ -1,10 +1,62 @@
 
- <div class="row-fluid">
-   
+<div class="row-fluid">
+	<table class="table zebra-striped">
+ 	
+ 
 
-  <ul class="nav nav-tabs nav-stacked">
-<% @markets.each do |market| %>
-    <li><a href="/markets/<%= market['id'] %>/<%= URI::escape(market['marketname'][3..50]) %>"><%= market['marketname'][3..50] %>  (<%= market['marketname'][0..3] %> miles away)</a></li>
+  <tr>
+  	<th>Market</th>
+  	<th>Distance</th>
+  	<th>Day of Week</th>
+  </tr>
+<% @markets.each do |market|
+
+# Parsing the  string from USDA api so we can organize this.
+	mystring = market['marketname'][3..70]
+
+	day_week_strt = mystring.count ' - '
+	day_week_end = mystring.count ' - ', ' '
+
+	 
+	array= mystring.split
+
+	# puts mysplit
+	
+	hash = Hash[array.map.with_index.to_a]    # => {"a"=>0, "b"=>1, "c"=>2}
+	# puts hash
+	# puts hash['-']
+	x = hash['-']
+
+	if x
+		x.to_i
+		i = x + 1
+		day_week = array[i]
+		# puts day_week
+	end
+	
+	
+
+	market_name = URI::escape(market['marketname'][3..70])
+	distance = market['marketname'][0..3]
+	%>
+    <tr>
+    	<td>
+    		<a href="/markets/<%= market['id'] %>/<%= market_name %>"><%= market['marketname'][3..70] %></a> 
+    	</td>
+    	<td>
+    		<%= distance %> miles away
+    	</td>
+    	<td>
+    		<span class="label label-info"><%= day_week %></span>
+    	</td>
+    </tr>
 <% end %>
-  </ul>
+  </table>  
 </div>
+
+<!-- <script src="js/jquery.tablesorter.min.js"></script>
+<script >
+  $(function() {
+    $("table#sortTableExample").tablesorter({ sortList: [[1,0]] });
+  });
+</script> -->

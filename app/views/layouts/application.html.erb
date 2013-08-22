@@ -35,7 +35,6 @@
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
     <%= javascript_include_tag "application" %>
- 
 
   </head>
   <body >
@@ -57,7 +56,7 @@
               <li class="dropdown pull-right">
                 <a href="#" class="dropdown-toggle pull-right" data-toggle="dropdown">
                  
-                <%= Date::MONTHNAMES[@month] %> in <%= @region.name %>
+                <%= Date::MONTHNAMES[@month] %> in <span id="arealabel"></span>
                 <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
@@ -87,4 +86,39 @@
     </footer>
   </body>
 </html>
+
+<script>
+getLocation()
+function getLocation()
+  {
+  if (navigator.geolocation)
+    {
+    navigator.geolocation.getCurrentPosition(showPosition);
+    }
+  else{alert("no geolocation")}
+  }
+
+function showPosition(position)
+  {
+    url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude + "&sensor=true";
+
+    console.log(url);
+
+    $.ajax({
+      url: url,
+      method: 'GET',
+      datatype: 'json',
+      success: function(my_data) { 
+        // console.log(my_data.results[0].address_components[3].long_name)
+        my_city = my_data.results[0].address_components[3].long_name
+        $('#arealabel').html(my_city);
+      }
+      
+    });
+
+  //   $('#arealabel').html("LAT:" + position.coords.latitude + 
+  // "LNG" + position.coords.longitude)
+  }
+</script>
+
 

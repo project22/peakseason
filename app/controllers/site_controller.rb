@@ -11,14 +11,27 @@ class SiteController < ApplicationController
       @carousel_items = Item.where(:season_start.gte => @month, :season_start.lte => @month+1 )
     end
 
-    puts @items.to_json
+    # puts @items.to_json
 
     @markets = []
    
-    @markets = []
+
    
     # @zip is set in ApplicationController
-    url = "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + @zip
+    # url = "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + @zip
+    # session[:lat] = "37.7833"
+    # session[:lng] = "-122.4167"
+    # lat = session[:lat]
+    # lng = session[:lng]
+
+    lat = request.location.latitude.to_s
+    lng = request.location.longitude.to_s
+    puts "lat:" + request.location.latitude.to_s + "lng:" + request.location.longitude.to_s
+
+    lat = "34.0219"
+    lng = "-118.4814"
+    url = "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/locSearch?lat=" + lat + "&lng=" + lng
+    puts url
      
     market_list = HTTParty.get(url)
   
