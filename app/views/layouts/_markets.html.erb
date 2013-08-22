@@ -1,14 +1,12 @@
 
 <div class="row-fluid">
-	<table class="table zebra-striped">
- 	
- 
 
-  <tr>
-  	<th>Market</th>
-  	<th>Distance</th>
-  	<th>Day of Week</th>
-  </tr>
+	<table class="table zebra-striped rowlink" data-provides="rowlink">
+	  <tr>
+	  	<th>Market</th>
+	  	<th>Distance</th>
+	  	<th>Day of Week</th>
+	  </tr>
 <% @markets.each do |market|
 
 # Parsing the  string from USDA api so we can organize this.
