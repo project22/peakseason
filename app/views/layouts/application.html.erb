@@ -104,6 +104,12 @@ function showPosition(position)
 
     console.log(url);
 
+    // set cookies with lat lng so Rails can get it.
+    var lat = position.coords.latitude;
+    var lng = position.coords.longitude;
+    document.cookie = "lat=" + escape(lat);
+    document.cookie = "lng=" + escape(lng);
+
     $.ajax({
       url: url,
       method: 'GET',
@@ -112,6 +118,12 @@ function showPosition(position)
         // console.log(my_data.results[0].address_components[3].long_name)
         my_city = my_data.results[0].address_components[3].long_name
         $('#arealabel').html(my_city);
+
+        // set cookie with lat long so rails can get it.
+        var lat = position.coords.latitude;
+        var lng = position.coords.longitude;
+        document.cookie = "lat" + escape(lat);
+        document.cookie = "lat" + escape(lng);
       }
       
     });
@@ -121,4 +133,11 @@ function showPosition(position)
   }
 </script>
 
+function getGeoLocation() {
+  navigator.geolocation.getCurrentPosition(setGeoCookie);
+}
 
+function setGeoCookie(position) {
+  var cookie_val = position.coords.latitude + "|" + position.coords.longitude;
+  document.cookie = "lat_lng=" + escape(cookie_val);
+}
