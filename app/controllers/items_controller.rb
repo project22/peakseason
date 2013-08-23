@@ -8,6 +8,10 @@ class ItemsController < ApplicationController
 
   # GET /items
   def index
+   
+  end
+
+  def in_season_listing
     @items = Item.all
   end
 

@@ -15,7 +15,7 @@
 <div class=" my_hero"> 
       <h1 class ="banner_font"><%= @item.name %></h1>
     </div>
- <div class="container-fluid">
+ <div class="container">
   <div class="row-fluid"> 
     
   </div>
@@ -27,7 +27,7 @@
         <div>
           <h3>Try these recipes</h3>
 
- <div id="this-carousel-id" class="carousel slide" ><!-- class of slide for animation -->
+          <div id="this-carousel-id" class="carousel slide" ><!-- class of slide for animation -->
             <div class="carousel-inner">
 
               <% my_index = 1 %>
@@ -42,9 +42,7 @@
               end           
               %>
               <div class="item <%= active_class %>" style="cursor:pointer; background-image: url('<%= recipe['image_url'] %>'); background-size:100%; height: 400px;    background-repeat:no-repeat; background-position:center top; background-color:gray" onclick="window.open('<%= recipe["source_url"] %>');" >
-                
-
-                
+                          
                 <div class="well well-small recipe_label">
                   <a href="<%= recipe['source_url'] %>" target="recipe"><strong><%= recipe['title'] %></strong></a>
                 </div>
@@ -53,52 +51,11 @@
               <% 
               my_index = my_index +1
               end %>
-
-
-             
-          <!--     <div class="item" id="item3">
-                <div class="hero-unit hero-overlay" >
-                  <h1>Heirloom Tomatoes</h1>
-                  <p>Heirloom Tomatoes  in sesaon</p>
-                  <p>
-                    <a class="btn btn-primary btn-large">
-                      Learn more
-                    </a>
-                  </p>
-                </div>
-              </div> -->
-
-            <!--   <div class="item" id="item4">
-                <div class="hero-unit hero-overlay pull-right" >
-                  <h1>Pistachios</h1>
-                  <p>Pistachios in sesaon</p>
-                  <p>
-                    <a class="btn btn-primary btn-large">
-                      Learn more
-                    </a>
-                  </p>
-                </div>
-              </div> -->
             </div><!-- /.carousel-inner -->
-            <!--  Next and Previous controls below
-                  href values must reference the id for this carousel -->
-              <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
-              <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
+            <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
+            <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
           </div><!-- /.carousel -->
-
-
-
-<!-- 
-
-          <% @recipes.each do |recipe|  %>
-          <div class="well">
-            <a href="<%= recipe['f2f_url'] %>" target="recipe"><h5><%= recipe['title'] %></h5></a>
-            <a href="<%= recipe['f2f_url'] %>" target="recipe"><span class="thumb_container">
-                  <img class="media-object thumb" width="200" src="<%= recipe['image_url'] %>">
-                  </span></a>
-            <p><a href="<%= recipe['f2f_url'] %>" target="recipe">View Recipe</a></p>
-          </div>
-          <% end %> -->
+          <button class="btn">Buy Locally</button>
         </div>
       </div>
     </div>

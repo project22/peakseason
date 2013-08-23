@@ -4,10 +4,11 @@ class MarketsController < ApplicationController
 
   # GET /regions/market
   def index
-
-
     # render json: market_list
     # render json: @market_array.first['marketname']
+  end
+
+  def local_listing
   end
 
   def getmarkets
@@ -65,10 +66,27 @@ class MarketsController < ApplicationController
   end
 
   def localmarkets
-    @markets = []
-   
+     @markets = []
+
     # @zip is set in ApplicationController
-    url = "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + @zip
+    # url = "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + @zip
+    # session[:lat] = "37.7833"
+    # session[:lng] = "-122.4167"
+    # lat = session[:lat]
+    # lng = session[:lng]
+
+    # get lat lng from cookies set by javacript in the application controller.
+    lat = cookies[:lat].to_s
+    lng = cookies[:lng].to_s
+
+    # lat = request.location.latitude.to_s
+    # lng = request.location.longitude.to_s
+    # puts "lat:" + request.location.latitude.to_s + "lng:" + request.location.longitude.to_s
+
+    # lat = "34.0219"
+    # lng = "-118.4814"
+    url = "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/locSearch?lat=" + lat + "&lng=" + lng
+    puts url
      
     market_list = HTTParty.get(url)
   
@@ -76,18 +94,16 @@ class MarketsController < ApplicationController
      JSON.parse(market_list.body)["results"].each do |item|
        # @market_array.push(item["id"])
 
-       url = "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=" + item["id"]
-       market_detail = HTTParty.get(url)
+       # url = "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=" + item["id"]
+       # market_detail = HTTParty.get(url)
 
-       market = JSON.parse(market_detail.body)["marketdetails"]
-       market["marketname"] = item["marketname"]
-       @markets.push(market)
+       # market = JSON.parse(market_detail.body)["marketdetails"]
+       # market["marketname"] = item["marketname"]
+       @markets.push(item)
 
        # puts item["id"]
      end
-     puts @markets
-     # render json: @markets
-     render "layouts/local_markets"
+     render "markets/local_listing"
   end
 
   def detail

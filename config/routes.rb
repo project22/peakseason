@@ -19,6 +19,8 @@ PeakSeason::Application.routes.draw do
   get "/local_recipes" => "recipes#local_listing"
   get "/local_markets" => "markets#localmarkets"
   get "/markets/:id/:name" => "markets#detail"  
+  get "/in_season" => "items#in_season_listing"
+  get "/local_markets" => "markets#local_markets"
 
   get "/geocoder" => "markets#geocoder"
   get "/getmarkets" => 'markets#getmarkets'

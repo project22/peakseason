@@ -14,9 +14,7 @@ class SiteController < ApplicationController
     # puts @items.to_json
 
     @markets = []
-   
 
-   
     # @zip is set in ApplicationController
     # url = "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + @zip
     # session[:lat] = "37.7833"

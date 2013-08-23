@@ -38,7 +38,7 @@
 
   </head>
   <body >
-  
+
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
@@ -49,20 +49,16 @@
           </a>
           <a class="brand" href="/">In Peak Season <i class="icon-leaf"></i></a>
           <div class="container-fluid nav-collapse">
-            <ul class="nav">         
-           <!--    <li><%= link_to "Local Markets", "/local_markets"  %></li> -->
-           <!--    <li><%= link_to "Recipes in Season", "/local_recipes"  %></li>  -->          
+            <ul class="nav pull-right">         
+              <li><a href="/in_season"><i class="icon-heart"></i> In Season Near Me</a></li>  
+              <li><a href="/local_markets"><i class="icon-globe"></i> Local Markets</a></li>       
             </ul>
             <ul class="nav pull-right">
               <li class="dropdown pull-right">
-                <a href="#" class="dropdown-toggle pull-right" data-toggle="dropdown">
-                 
-                <%= Date::MONTHNAMES[@month] %> in <span id="arealabel"></span>
-                <b class="caret"></b>
+                <a href="#" class="dropdown-toggle pull-right" data-toggle="dropdown"><i class="icon-calendar"></i> <%= Date::MONTHNAMES[@month] %> in <span id="arealabel"></span> <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a href="#"><i class="icon-refresh"></i> Reset Region</a></li>  
-                  <li><a href="#"><i class="icon-globe"></i> Choose Region</a></li> 
+                  <li><a href="#"><i class="icon-refresh"></i> Reset Location</a></li> 
                 </ul>
               </li>              
             </ul>            
@@ -119,6 +115,8 @@ function showPosition(position)
         // console.log(my_data.results[0].address_components[3].long_name)
         my_city = my_data.results[0].address_components[3].long_name
         $('#arealabel').html(my_city);
+
+        // Set cookie for my_city
 
         // set cookie with lat long so rails can get it.
         var lat = position.coords.latitude;
