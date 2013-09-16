@@ -22,19 +22,9 @@ class ApplicationController < ActionController::Base
   @items = Item.where(:season_start.lte => @month,  :season_end.gte => @month, :region => @region.name )
 
   search_radius = 20
-  @zip = "90210"
+  # get from session
+  # @zip = session[:zip]
+  # @zip = "90210"
   
-  # Use geocoder to fill this with markets within search_radius
-  # @markets = Market.where(:region => @region)
-
- 
-    
-
-
-
-
   end
-  # def month
-  # 	8
-  # end
 end

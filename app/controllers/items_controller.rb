@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
 
   # GET /items
   def index
-   
+    @items = Item.all
   end
 
   def in_season_listing
@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
   # GET /items/1
   def show
     # both these queries need to be filtered by the item
-    # @markets = Market.all
+    
  
     rec_loader = Rec.new
     # ings = params[:q]
@@ -68,31 +68,34 @@ class ItemsController < ApplicationController
   def create
     # get the name and region first and then manually extract and insert into data, the fields for month from the hash.
     data=item_params
-    data[:season_start] = params['item']['season_start(2i)']
-    data[:season_end] = params['item']['season_end(2i)']
-
     @item = Item.new(data)
 
+    # data[:season_start] = params['item']['season_start(2i)']
+    # data[:season_end] = params['item']['season_end(2i)']
+
+    
+
     if @item.save
-      format.html { redirect_to @item }      
+       redirect_to items_url, notice: 'Item was successfully created.'     
     else
-      format.html { render action: 'new' }
+       render action: 'new' 
     end
   end
+
 
   # PATCH/PUT /items/1
   def update
     if @item.update(item_params)
-      format.html { redirect_to items_url, notice: 'Item was successfully created.' } 
+       redirect_to items_url, notice: 'Item was successfully updated.' 
     else
-      format.html { render action: 'edit' }
+      render action: 'edit' 
     end
   end
 
   # DELETE /items/1
   def destroy
     @item.destroy
-    format.html { redirect_to items_url }
+    redirect_to items_url, notice: 'Item was successfully destroyed.' 
   end
 
   private

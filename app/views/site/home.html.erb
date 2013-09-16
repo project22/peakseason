@@ -35,14 +35,17 @@
           <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
           <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
       </div><!-- /.carousel -->
-      <h3>Nearby Farmers Markets</h3>
-        <%= render 'layouts/markets' %>  
+  
+         
+        <p id="output_markets"><%= image_tag("ajax-loader.gif", :alt => "Searching") %></p>
+        
     </div>
     <div class="span4 sidebar">    
       <div>
       <!--   <h4><%= Date::MONTHNAMES[@month] %> in <%= @region %> <button class="btn btn-small">Change Location</button></h4> -->
         <h3>What's in Season</h3>
           <%= render 'layouts/items' %>
+
       </div>
     </div><!--/span-->
   </div><!--/row-->

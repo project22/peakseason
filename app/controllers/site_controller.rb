@@ -22,9 +22,9 @@ class SiteController < ApplicationController
     # lat = session[:lat]
     # lng = session[:lng]
 
-    # get lat lng from cookies set by javacript in the application controller.
-    lat = cookies[:lat].to_s
-    lng = cookies[:lng].to_s
+    # get lat lng from session
+    lat = session[:lat].to_s
+    lng = session[:lng].to_s
 
     # lat = request.location.latitude.to_s
     # lng = request.location.longitude.to_s

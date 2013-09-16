@@ -55,14 +55,18 @@
             <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
             <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
           </div><!-- /.carousel -->
-          <button class="btn">Buy Locally</button>
+          <a href="/local_markets"><button class='btn btn-success'><i class="icon-globe"></i> Find Local Markets</button>
+         
         </div>
       </div>
     </div>
 
     <div class="span6">
       <div>
+
         <h3><%= @item.name %></h3>
+        
+        <hr>
         <p><%= @item.description %></p>   
       </div>
     </div>

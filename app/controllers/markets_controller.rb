@@ -65,7 +65,7 @@ class MarketsController < ApplicationController
     render json: myaddress
   end
 
-  def localmarkets
+  def local_markets
      @markets = []
 
     # @zip is set in ApplicationController

@@ -67,13 +67,11 @@
         </div>
       </div>
     </div>
-    <!-- <div class="container"> -->
+
     <div class="container">
     <%= bootstrap_flash %>
     </div>
     <%= yield %>
-
-<!--     </div>  -->
     <!-- /container -->
     <footer>
       <hr>
@@ -86,26 +84,34 @@
 
 <script>
 getLocation()
-function getLocation()
-  {
-  if (navigator.geolocation)
-    {
-    navigator.geolocation.getCurrentPosition(showPosition);
+
+function getLocation() {
+  // if (!document.session) {
+    if (navigator.geolocation)
+      {
+      navigator.geolocation.getCurrentPosition(showPosition);
+      console.log("fired");
+      }
+    else {
+      alert("We cannot find your location");
     }
-  else{alert("no geolocation")}
-  }
+
+  // }
+    
+}
 
 function showPosition(position)
   {
     url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude + "&sensor=true";
 
-    console.log(url);
+    console.log(url + "hi");
 
-    // set cookies with lat lng so Rails can get it.
-    var lat = position.coords.latitude;
-    var lng = position.coords.longitude;
-    document.cookie = "lat=" + escape(lat);
-    document.cookie = "lng=" + escape(lng);
+    // set session with lat lng so Rails can get it.
+    // var lat = position.coords.latitude;
+    // var lng = position.coords.longitude;
+    // document.session = "lat=" + escape(lat);
+    // document.session = "lng=" + escape(lng);
+
 
     $.ajax({
       url: url,
@@ -113,7 +119,13 @@ function showPosition(position)
       datatype: 'json',
       success: function(my_data) { 
         // console.log(my_data.results[0].address_components[3].long_name)
-        my_city = my_data.results[0].address_components[3].long_name
+        console.log(my_data);
+        // set zip
+        document.cookie = "zip=" + my_data.results[0].address_components[4]
+        city = my_data.results[0].address_components[3].long_name;
+        document.cookie = "city=" + city;
+        my_city = document.cookie["city"];
+
         $('#arealabel').html(my_city);
 
         // Set cookie for my_city
@@ -121,11 +133,25 @@ function showPosition(position)
         // set cookie with lat long so rails can get it.
         var lat = position.coords.latitude;
         var lng = position.coords.longitude;
-        document.cookie = "lat" + escape(lat);
-        document.cookie = "lat" + escape(lng);
+        document.cookie  = "lat=" + escape(lat);
+        document.cookie = "lat=" + escape(lng);
+      }    
+    });
+
+    // Pop the markets into the div now that the cookie is set.
+   
+    markets_url = "/local_markets"
+    
+    $.ajax({
+      url: markets_url,
+      method: 'GET',
+      datatype: 'html',
+      success: function(my_data) { 
+        $('#output_markets').html(my_data);
       }
       
     });
+
 
   //   $('#arealabel').html("LAT:" + position.coords.latitude + 
   // "LNG" + position.coords.longitude)
